@@ -1,0 +1,8 @@
+{
+  "name": "HerHorizon",
+  "description": "An AI-powered glassmorphic gateway empowering women in STEM, FinTech, and higher education. Features an interactive Salary Equalizer, STEM micro-grants finder, AI-driven career pathing, and direct Ask-Her-AI mentorship.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
