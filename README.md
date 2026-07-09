@@ -1,20 +1,111 @@
+# 🌅 HerHorizen — AI FinTech & STEM Career Navigator
+
+An AI-powered empowerment platform designed for women in STEM and higher education. ElevateHer bridges systemic gender disparity gaps by combining personalized AI career pathing, financial salary negotiation intelligence, curated micro-grant discovery, and 24/7 mentorship assistance into a seamless, accessible web platform.
+
+---
+
+## 📸 Preview & Screenshots
+
 <div align="center">
-<img width="1200" height="475" alt="GHBanner" src="https://ai.google.dev/static/site-assets/images/share-ais-513315318.png" />
+   
+   <br/>
+   
+### Home
+![Homepage Preview](https://github.com/rudra520/BROZZZZ-v2v/blob/32c8a9853c2a2b129520d9528709423fb0446306/Preview%20Img/1_Homepage.png)
+
+### 1. FinTech Wage Equalizer & Negotiation Simulator (Hero Feature)
+*Interactive salary benchmarking, wage gap telemetry, and AI negotiation script generation.*
+![FinTech Wage Equalizer Preview](https://github.com/rudra520/BROZZZZ-v2v/blob/32c8a9853c2a2b129520d9528709423fb0446306/Preview%20Img/3_FinTech_Equilizer.png)
+
+<br/>
+
+### 2. EduGrant & STEM Micro-Scholarship Finder
+*Smart filterable hub for women-focused research fellowships, conference travel grants, and study micro-grants.*
+![EduGrant Finder Preview](https://github.com/rudra520/BROZZZZ-v2v/blob/32c8a9853c2a2b129520d9528709423fb0446306/Preview%20Img/4_EduGrant_Hub.png)
+
+<br/>
+
+### 3. AI STEM Mentor & 90-Day Skill Roadmap Engine
+*Custom step-by-step career progression roadmaps for technical and engineering roles.*
+![AI STEM Roadmap Preview](https://github.com/rudra520/BROZZZZ-v2v/blob/32c8a9853c2a2b129520d9528709423fb0446306/Preview%20Img/5_AI_Career_Path.png)
+
+<br/>
+
+### 4. Ask-Her-AI 24/7 Conversational Companion
+*Embedded AI assistant for technical interview prep, resume polishing, and workplace guidance.*
+![Ask-Her-AI Preview](https://github.com/rudra520/BROZZZZ-v2v/blob/32c8a9853c2a2b129520d9528709423fb0446306/Preview%20Img/6_Ask_Her_AI.png)
+
 </div>
 
-# Run and deploy your AI Studio app
+---
 
-This contains everything you need to run your app locally.
+## ✨ Features
 
-View your app in AI Studio: https://ai.studio/apps/0462a31f-86f1-45ce-8857-35f69c4c8ca7
+- **Module 1: Interactive AI STEM Career Pathway Engine:** Generates customized 90-day technical skill roadmaps with curated open-source resources and certifications based on current domain and target career tier.
+- **Module 2: FinTech Wage Equalizer & Negotiation Simulator:** Real-time salary benchmark comparisons, wage gap estimation, and dynamic AI-powered negotiation email/talking-point script generation.
+- **Module 3: EduGrant & STEM Micro-Scholarship Finder:** Searchable directory connecting female students to global grants, IEEE WIE travel awards, research fellowships, and hackathon sponsorships.
+- **Module 4: Ask-Her-AI 24/7 Career Mentor:** Conversational companion fine-tuned for engineering resume feedback, interview prep, and professional networking advice.
 
-## Run Locally
+---
 
-**Prerequisites:**  Node.js
+## 🛠️ Tech Stack & Tools
+
+- **Frontend:** Next.js 14, React, Tailwind CSS.
+- **UI & Data Visualization:** Lucide Icons, Framer Motion, Recharts.
+- **Backend API:** Node.js, Next.js Serverless API Routes[cite: 3, 5]
+- **AI Infrastructure:** Google Gemini API (for prompt orchestration, script generation, and career roadmap creation).
+- **Deployment:** Vercel.
+
+---
+
+## 📚 Documentation & Architecture
+
+ElevateHer operates on a modular frontend-backend architecture. The Next.js frontend delivers a glassmorphic, responsive user interface styled with Tailwind CSS and enhanced with interactive Recharts visual telemetry. 
+
+AI requests (such as roadmap generation, salary script synthesis, and chat interactions) are processed through secure serverless API endpoints using Google Gemini models with crafted system prompts to ensure actionable, empathetic, and data-backed guidance.
 
 
-1. Install dependencies:
-   `npm install`
-2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
-3. Run the app:
-   `npm run dev`
+```
+
+┌─────────────────────────────────────────────────────────────┐
+│                   Next.js 14 Glassmorphic UI                │
+│ (Wage Equalizer | EduGrant Finder | AI Roadmap | Ask-Her-AI) │
+└──────────────────────────────┬──────────────────────────────┘
+│ Serverless API Calls
+▼
+┌─────────────────────────────────────────────────────────────┐
+│                  Next.js API & Node.js Core                 │
+└──────────────────────────────┬──────────────────────────────┘
+│ Prompt Orchestration
+▼
+┌─────────────────────────────────────────────────────────────┐
+│                      Google Gemini API                      │
+└─────────────────────────────────────────────────────────────┘
+
+```
+
+---
+
+## 🚀 Local Setup & Installation
+
+```bash
+# 1. Clone the repository
+git clone [https://github.com/your-username/team_name-v2v.git](https://github.com/your-username/team_name-v2v.git)
+
+# 2. Navigate to project directory
+cd team_name-v2v
+
+# 3. Install dependencies
+npm install
+
+# 4. Set up environment variables (.env.local)
+GEMINI_API_KEY=your_gemini_api_key_here
+
+# 5. Run local development server
+npm run dev
+
+```
+
+Open [http://localhost:3000](http://localhost:3000) in your browser to view the application locally.
+
+```
