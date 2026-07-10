@@ -25,16 +25,15 @@ async function startServer() {
 
   // Helper for resilient Gemini API calls with exponential backoff retry and model fallback on transient errors
   async function generateContentWithRetry(params: any, retries = 3, delay = 1000): Promise<any> {
-    const requestedModel = params.model || "gemini-2.5-flash";
+    const requestedModel = params.model || "gemini-3.5-flash";
     
     // Set up a robust list of models to try in sequence
     const modelsToTry = [
-      "gemini-2.5-flash",
-      "gemini-2.5-pro",
-      "gemini-1.5-flash",
-      "gemini-1.5-pro",
       "gemini-3.5-flash",
-      "gemini-3.1-flash-lite"
+      "gemini-3.1-flash-lite",
+      "gemini-flash-latest",
+      "gemini-2.5-flash",
+      "gemini-2.5-pro"
     ];
 
     // Ensure the requested model is at the very front of the fallback chain
@@ -103,7 +102,7 @@ async function startServer() {
 
       try {
         const response = await generateContentWithRetry({
-          model: "gemini-2.5-flash",
+          model: "gemini-3.5-flash",
           contents: [
             ...history,
             { role: "user", parts: [{ text: prompt }] }
@@ -177,7 +176,7 @@ async function startServer() {
 
       try {
         const response = await generateContentWithRetry({
-          model: "gemini-2.5-flash",
+          model: "gemini-3.5-flash",
           contents: `Create a professional 4-step tech career roadmap for a female candidate aspiring to become a '${role}' with a focus/skill gap of '${focusArea || "General Advancement"}'. For each step, supply: Title, Description, 4 KeySkills, and 3 RecommendedActions (practical portfolios or benchmarks).`,
           config: {
             responseMimeType: "application/json",
@@ -278,7 +277,7 @@ async function startServer() {
 
       try {
         const response = await generateContentWithRetry({
-          model: "gemini-2.5-flash",
+          model: "gemini-3.5-flash",
           contents: `You are 'Ask-Her-AI's senior engineering pathway architect. Design an immersive, interactive 90-day technical skill roadmap to transition from the current role "${cleanCurrent}" to the aspirational target role "${cleanTarget}".
 
 Generate a structured JSON object containing an array of exactly 9 technical milestone cards.
@@ -550,100 +549,59 @@ Ensure all links are real, valid, and helpful (prefer official GitHub repos or o
     }
   });
 
-  // API Route for AI Negotiation Script Builder
+  // API Route for AI Negotiation Script Builder (Streaming chunk-by-chunk)
   app.post("/api/negotiation-script", async (req, res) => {
     try {
-      const { role, experience, domain, targetSalaryAdjustment, keyAccomplishments, tone } = req.body;
+      const { role, experience, domain, currentOffer, targetMarketValue, targetSalaryAdjustment, keyAccomplishments, tone } = req.body;
       const cleanRole = String(role || "Software Engineer");
-      const cleanExperience = String(experience || "Entry");
+      const cleanExperience = String(experience || "Mid");
       const cleanDomain = String(domain || "Computer Science");
-      const cleanAdjustment = String(targetSalaryAdjustment || "15%");
-      const cleanAccomplishments = String(keyAccomplishments || "Led key features");
-      const cleanTone = String(tone || "Confident");
+      const cleanCurrent = Number(currentOffer) || 0;
+      const cleanTargetVal = Number(targetMarketValue) || 0;
+      const cleanAdjustment = String(targetSalaryAdjustment || "20%");
+      const cleanAccomplishments = String(keyAccomplishments || "Delivered high-impact technical milestones");
+      const cleanTone = String(tone || "Data-Driven");
 
-      try {
-        const response = await generateContentWithRetry({
-          model: "gemini-2.5-flash",
-          contents: `You are an expert compensation advisor and career coach. Help a female professional negotiate a higher offer.
-Role: ${cleanRole} (${cleanExperience} Level)
-Domain: ${cleanDomain}
-Target Salary Adjustment / Requested Percentage: ${cleanAdjustment}
-Key Accomplishments/Impact: ${cleanAccomplishments}
-Tone of Negotiation: ${cleanTone}
+      // Set headers for streaming
+      res.setHeader("Content-Type", "text/plain; charset=utf-8");
+      res.setHeader("Transfer-Encoding", "chunked");
 
-Generate a JSON object containing:
-1. "scriptTemplate": A highly polished, customized, and copyable email/script template that she can send to the recruiter or say in the meeting. It must directly reference her key accomplishments, state her requested target compensation clearly and professionally, and reflect the selected tone: "${cleanTone}" (e.g. Confident, Data-Driven, or Collaborative).
-2. "talkingPoints": An array of 3 highly focused, high-impact bulleted talking points summarizing her value, achievements, and market alignment.
-3. "counterOfferStrategies": An array of 2 strategic countermeasures for common objections (like "internal salary bands" or "budget caps") tailored to her scenario.
+      const prompt = `You are 'Ask-Her-AI's senior compensation specialist and master negotiator. 
+Help a high-performing female tech professional draft a professional, highly polished, and data-driven negotiation email to align her compensation with her true market worth.
 
-Ensure the output is valid JSON in the specified schema.`,
-          config: {
-            responseMimeType: "application/json",
-            responseSchema: {
-              type: "object",
-              properties: {
-                scriptTemplate: { type: "string" },
-                talkingPoints: { type: "array", items: { type: "string" } },
-                counterOfferStrategies: { type: "array", items: { type: "string" } }
-              },
-              required: ["scriptTemplate", "talkingPoints", "counterOfferStrategies"]
-            }
-          }
-        });
+Parameters:
+- Role/Level: ${cleanRole} (${cleanExperience} Level)
+- Specialized Domain: ${cleanDomain}
+- Current Offered Base Salary: ${cleanCurrent}
+- Target Fair Market Value Benchmark: ${cleanTargetVal}
+- Target Requested Base Salary Adjustment: ${cleanAdjustment}
+- Selection Tone: ${cleanTone}
+- Documented Accomplishments: "${cleanAccomplishments}"
 
-        res.json(JSON.parse(response.text || "{}"));
-      } catch (geminiError: any) {
-        console.warn("Gemini API Error in negotiation script endpoint, using fallback:", geminiError);
-        
-        // Dynamic fallback generator based on tone and accomplishments
-        let template = "";
-        let points: string[] = [];
-        let strategies: string[] = [];
+Strict system prompt rules:
+1. Write a professional, data-driven compensation negotiation email. Do NOT include markdown blocks like "\`\`\`" or system preambles (such as "Certainly! Here is your email:"). Start directly with the greeting, e.g., "Dear [Hiring Manager Name]," or "Dear [Recruiter Name],".
+2. Position the requested ${cleanAdjustment} base salary adjustment objectively by anchoring it relative to the validated ${cleanTargetVal} fair market average compared to the current offer of ${cleanCurrent}.
+3. Support the argument heavily with her accomplishments: "${cleanAccomplishments}".
+4. Tone must be strictly ${cleanTone} (e.g. Confident, Data-Driven, or Collaborative). Keep the vocabulary elegant, strong, and highly executive.
+5. Stream ONLY the polished email script template.`;
 
-        if (cleanTone === "Confident") {
-          template = `Dear [Recruiter Name],\n\nThank you for the wonderful offer to join the team as a ${cleanRole}. I am incredibly excited about the opportunity to contribute to your technical excellence.\n\nBased on my extensive background in ${cleanDomain}, and specifically my track record of: "${cleanAccomplishments}", I would like to discuss aligning the base compensation to better reflect this specialized value. Given regional benchmarks and my contribution potential, I am seeking an adjustment of ${cleanAdjustment} to the base offer.\n\nWith this alignment, I am ready to sign and fully commit to driving outstanding results for the team. I look forward to your thoughts.\n\nBest regards,\n[Your Name]`;
-          points = [
-            `Anchored on tangible value: Direct link established between your technical success ("${cleanAccomplishments}") and the requested adjustment.`,
-            "Strong commitment: Signal of ready-to-sign commitment upon achieving this market standard, speeding up their hiring process.",
-            "Professional positioning: Formulated with standard high-performance phrasing that commands respect."
-          ];
-          strategies = [
-            "If they offer equity instead: Propose a hybrid structure with a modest base increase supplemented by performance-based stock accelerators.",
-            "If they cite strict bands: Ask about exceptions for highly specialized expertise, noting that your experience directly addresses their immediate delivery bottlenecks."
-          ];
-        } else if (cleanTone === "Data-Driven") {
-          template = `Dear [Recruiter Name],\n\nI appreciate the offer for the ${cleanRole} role. After researching market thresholds and reviewing the core responsibilities, I would like to propose a compensation adjustment.\n\nMy research indicates that for a professional with my experience level in ${cleanDomain} delivering high-impact metrics like: "${cleanAccomplishments}", the market threshold is positioned approximately ${cleanAdjustment} higher than the current base offer. Aligning with this market standard would reflect the specialized skills I bring to the table.\n\nThank you for considering this data-aligned proposal. I look forward to finding a mutually beneficial agreement.\n\nSincerely,\n[Your Name]`;
-          points = [
-            "Objective anchoring: Anchored in regional market percentiles, making it difficult to reject on subjective grounds.",
-            "Objective metrics: Focused strictly on documented delivery metrics and technical competence.",
-            "Removes emotion: Keeps the tone professional, objective, and analytical."
-          ];
-          strategies = [
-            "If they cite general budget limits: Ask to see the objective pay band definitions for this role to discuss where your high-impact milestones place you.",
-            "If they defer to next review: Ask to write a performance-linked salary review clause directly into the employment contract for 6 months."
-          ];
-        } else { // Collaborative
-          template = `Dear [Recruiter Name],\n\nThank you so much for the offer to join as a ${cleanRole}. I have great respect for your vision and am very eager to collaborate with the team.\n\nI want to ensure my starting package is aligned with both the role's high expectations and the specialized skills I offer. Specifically, my expertise in "${cleanAccomplishments}" will enable me to deliver immediate value to your current ${cleanDomain} initiatives. Would it be possible to explore adjusting the base compensation by ${cleanAdjustment}?\n\nI want to work together to find a solution that works for both of us and sets us up for a highly successful partnership. Thank you for your support!\n\nWarmly,\n[Your Name]`;
-          points = [
-            "Partnership focus: Frames the discussion as a collaborative exercise to achieve a win-win partnership.",
-            "Immediate contribution: Highlights how your skills (\"${cleanAccomplishments}\") directly solve their immediate engineering priorities.",
-            "Soft power: Uses collaborative language to lower defensive barriers while remaining firm on value."
-          ];
-          strategies = [
-            "If they can't match base: Propose non-salary benefits like remote work stipends, signing bonuses, or an accelerated 6-month review schedule.",
-            "If they request compromise: Suggest meeting halfway with a written commitment to review compensation upon completing your first major milestone."
-          ];
+      const responseStream = await ai.models.generateContentStream({
+        model: "gemini-3.5-flash",
+        contents: prompt,
+      });
+
+      for await (const chunk of responseStream) {
+        if (chunk.text) {
+          res.write(chunk.text);
         }
-
-        res.json({
-          scriptTemplate: template,
-          talkingPoints: points,
-          counterOfferStrategies: strategies
-        });
       }
+      res.end();
     } catch (error: any) {
-      console.error("General Error in negotiation script endpoint:", error);
-      res.status(500).json({ error: error.message || "Failed to generate script." });
+      console.error("Error in streaming negotiation-script:", error);
+      // Fallback response in case of error
+      const targetValStr = req.body.targetMarketValue ? String(req.body.targetMarketValue) : "market rate";
+      res.write(`Dear [Recruiter Name],\n\nThank you for the wonderful offer to join the team as a ${req.body.role || "Specialist"}. I am extremely excited about the opportunity to contribute to your core initiatives.\n\nBased on my contributions in ${req.body.domain || "tech"}, including my accomplishments in "${req.body.keyAccomplishments || "technical delivery"}", as well as validated market standards, I would like to request alignment of my base salary to match the fair market value. Given the regional averages of ${targetValStr} and my technical background, I am seeking a base salary adjustment of ${req.body.targetSalaryAdjustment || "20%"}.\n\nAligning the offer with standard market benchmarks would reflect the value I will bring. I look forward to your thoughts and to establishing a highly successful partnership.\n\nWarmly,\n[Your Name]`);
+      res.end();
     }
   });
 
@@ -672,7 +630,7 @@ Ensure the output is valid JSON in the specified schema.`,
 
       try {
         const response = await generateContentWithRetry({
-          model: "gemini-2.5-flash",
+          model: "gemini-3.5-flash",
           contents: `You are an expert scholarship committee lead and career advisor. Analyze this female candidate's profile against the specified scholarship or grant requirements:
           
 Grant Title: ${cleanTitle}
@@ -797,7 +755,7 @@ Ensure the output is valid JSON in the specified schema.`,
 
       try {
         const response = await generateContentWithRetry({
-          model: "gemini-2.5-flash",
+          model: "gemini-3.5-flash",
           contents: `Analyze this salary scenario for a female tech professional:
 Role: ${cleanRole}
 Years of Experience: ${cleanExperience}
