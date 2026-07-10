@@ -151,8 +151,12 @@ export default function App() {
             onClick={() => handleTabChange('home')}
             className="flex items-center gap-2.5 cursor-pointer group"
           >
-            <div className="w-10 h-10 rounded-xl bg-zinc-900 border border-zinc-800 flex items-center justify-center shadow-lg group-hover:scale-105 transition-transform duration-200">
-              <Sparkles size={18} className="text-zinc-100" />
+            <div className="w-10 h-10 rounded-xl overflow-hidden bg-zinc-900 border border-zinc-800 flex items-center justify-center shadow-lg group-hover:scale-105 transition-transform duration-200">
+              <img 
+                src="https://i.ibb.co/k6HQ7Rzp/Screenshot-2026-07-10-204243.png" 
+                alt="HerHorizon Logo" 
+                className="w-full h-full object-cover"
+              />
             </div>
             <span className="text-xl font-extrabold tracking-tight text-zinc-50">
               HerHorizon
