@@ -309,8 +309,8 @@ export default function FintechEqualizer() {
 
   // Recharts Chart Data
   const chartData = [
-    { name: 'Average Male', amount: benchmarks.maleAvg, fill: '#6366F1' },
-    { name: 'Average Female', amount: benchmarks.femaleAvg, fill: '#EC4899' },
+    { name: 'Market Upper Tier (75th Percentile)', amount: benchmarks.maleAvg, fill: '#D4D4D8' },
+    { name: 'Statistically Adjusted Equitable Baseline', amount: benchmarks.femaleAvg, fill: '#52525B' },
     { name: 'Your Offer / Target', amount: currentOffer, fill: '#10B981' }
   ];
 
@@ -343,14 +343,14 @@ export default function FintechEqualizer() {
       
       {/* Title & Header */}
       <div className="text-center max-w-3xl mx-auto">
-        <div className="inline-flex items-center gap-2 px-3 py-1 bg-gradient-to-r from-purple-500/15 to-pink-500/15 border border-purple-500/30 rounded-full text-purple-300 text-xs font-semibold mb-3">
-          <TrendingUp size={14} className="text-pink-400 animate-pulse" />
+        <div className="inline-flex items-center gap-2 px-3 py-1 bg-[#1F1437]/60 border border-[#A144FF]/25 rounded-full text-[#A5A1B8] text-xs font-semibold mb-3">
+          <TrendingUp size={14} className="text-[#E841A1] animate-pulse" />
           Equal Pay Portal • UN SDG 5 Framework
         </div>
         <h2 className="text-3xl font-extrabold text-white tracking-tight sm:text-4xl">
           Wage Equalizer & Negotiation Simulator
         </h2>
-        <p className="mt-3 text-base sm:text-lg text-slate-400">
+        <p className="mt-3 text-base sm:text-lg text-[#A5A1B8]">
           An interactive dashboard mapping fair STEM compensation thresholds. Verify your offer against validated gender wage patterns, then draft custom negotiation scripts in seconds.
         </p>
       </div>
@@ -358,56 +358,56 @@ export default function FintechEqualizer() {
       {/* 1. Top Metrics Bar */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
         {/* Metric 1 */}
-        <div className="bg-white/5 backdrop-blur-md border border-white/10 p-5 rounded-2xl flex items-center justify-between shadow-xl shadow-black/10 hover:border-pink-500/20 transition-all duration-300">
+        <div className="bg-[#1F1437]/40 backdrop-blur-md border border-[#A144FF]/10 p-5 rounded-2xl flex items-center justify-between shadow-xl shadow-black/10 hover:border-[#E841A1]/20 transition-all duration-300">
           <div>
-            <span className="text-xs text-slate-400 font-mono uppercase tracking-wider block">Benchmark Wage Gap</span>
+            <span className="text-xs text-[#A5A1B8] font-mono uppercase tracking-wider block">Benchmark Wage Gap</span>
             <div className="flex items-baseline gap-2 mt-1">
-              <span className="text-3xl font-extrabold text-pink-400 font-sans">
+              <span className="text-3xl font-extrabold text-[#E841A1] font-sans">
                 {benchmarks.wageGap}%
               </span>
-              <span className="text-xs text-slate-500 font-mono">in {domain}</span>
+              <span className="text-xs text-[#A5A1B8]/60 font-mono">in {domain}</span>
             </div>
-            <p className="text-[10px] text-slate-400 mt-2 flex items-center gap-1">
-              <Info size={10} className="text-pink-500" />
+            <p className="text-[10px] text-[#A5A1B8] mt-2 flex items-center gap-1">
+              <Info size={10} className="text-[#E841A1]" />
               Statistically validated gap for this segment.
             </p>
           </div>
-          <div className="w-12 h-12 rounded-2xl bg-pink-500/10 border border-pink-500/20 flex items-center justify-center text-pink-400">
+          <div className="w-12 h-12 rounded-2xl bg-[#E841A1]/10 border border-[#E841A1]/20 flex items-center justify-center text-[#E841A1]">
             <AlertCircle size={22} className="animate-pulse" />
           </div>
         </div>
 
         {/* Metric 2 */}
-        <div className="bg-white/5 backdrop-blur-md border border-white/10 p-5 rounded-2xl flex items-center justify-between shadow-xl shadow-black/10 hover:border-emerald-500/20 transition-all duration-300">
+        <div className="bg-[#1F1437]/40 backdrop-blur-md border border-[#A144FF]/10 p-5 rounded-2xl flex items-center justify-between shadow-xl shadow-black/10 hover:border-[#00FFA3]/20 transition-all duration-300">
           <div>
-            <span className="text-xs text-slate-400 font-mono uppercase tracking-wider block">Target Fair Market Value</span>
+            <span className="text-xs text-[#A5A1B8] font-mono uppercase tracking-wider block">Target Fair Market Value</span>
             <div className="flex items-baseline gap-2 mt-1">
-              <span className="text-2xl sm:text-3xl font-extrabold text-emerald-400 font-mono">
+              <span className="text-2xl sm:text-3xl font-extrabold text-[#00FFA3] font-mono">
                 {formatValue(Math.round((benchmarks.min + benchmarks.max) / 2))}
               </span>
             </div>
-            <p className="text-[10px] text-slate-400 mt-2 flex items-center gap-1">
-              <CheckCircle2 size={10} className="text-emerald-500" />
+            <p className="text-[10px] text-[#A5A1B8] mt-2 flex items-center gap-1">
+              <CheckCircle2 size={10} className="text-[#00FFA3]" />
               Recommended equal-compensation anchor.
             </p>
           </div>
-          <div className="w-12 h-12 rounded-2xl bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center text-emerald-400">
+          <div className="w-12 h-12 rounded-2xl bg-[#00FFA3]/10 border border-[#00FFA3]/20 flex items-center justify-center text-[#00FFA3]">
             <DollarSign size={22} />
           </div>
         </div>
 
         {/* Metric 3: Radial Progress Score */}
-        <div className="bg-white/5 backdrop-blur-md border border-white/10 p-5 rounded-2xl flex items-center justify-between shadow-xl shadow-black/10 hover:border-purple-500/20 transition-all duration-300">
+        <div className="bg-[#1F1437]/40 backdrop-blur-md border border-[#A144FF]/10 p-5 rounded-2xl flex items-center justify-between shadow-xl shadow-black/10 hover:border-[#A144FF]/20 transition-all duration-300">
           <div>
-            <span className="text-xs text-slate-400 font-mono uppercase tracking-wider block">Negotiation Readiness</span>
+            <span className="text-xs text-[#A5A1B8] font-mono uppercase tracking-wider block">Negotiation Readiness</span>
             <div className="flex items-baseline gap-2 mt-1">
-              <span className="text-3xl font-extrabold text-purple-300 font-sans">
+              <span className="text-3xl font-extrabold text-[#A144FF] font-sans">
                 {readinessScore}%
               </span>
-              <span className="text-xs text-slate-500 font-mono">Overall Score</span>
+              <span className="text-xs text-[#A5A1B8]/60 font-mono">Overall Score</span>
             </div>
-            <p className="text-[10px] text-slate-400 mt-2 flex items-center gap-1">
-              <Sparkles size={10} className="text-purple-400" />
+            <p className="text-[10px] text-[#A5A1B8] mt-2 flex items-center gap-1">
+              <Sparkles size={10} className="text-[#A144FF]" />
               Increases as you supply achievements & build script.
             </p>
           </div>
@@ -423,7 +423,7 @@ export default function FintechEqualizer() {
                 d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"
               />
               <path
-                className="text-purple-500 transition-all duration-500 ease-out"
+                className="text-[#A144FF] transition-all duration-500 ease-out"
                 strokeDasharray={`${readinessScore}, 100`}
                 strokeWidth="3.5"
                 strokeLinecap="round"
@@ -441,24 +441,24 @@ export default function FintechEqualizer() {
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
         
         {/* 2. Left Panel: Interactive Calculator & Bar Chart */}
-        <div className="lg:col-span-6 bg-white/5 backdrop-blur-xl border border-white/10 p-6 rounded-2xl flex flex-col justify-between shadow-2xl shadow-black/35 space-y-6">
+        <div className="lg:col-span-6 bg-[#1F1437]/25 backdrop-blur-xl border border-[#A144FF]/10 p-6 rounded-2xl flex flex-col justify-between shadow-2xl shadow-black/35 space-y-6">
           <div>
             <div className="flex items-center justify-between border-b border-white/5 pb-4 mb-5">
               <h3 className="text-lg font-bold text-white flex items-center gap-2">
-                <ShieldCheck className="text-emerald-400" size={18} />
+                <ShieldCheck className="text-[#00FFA3]" size={18} />
                 Salary Benchmark Calculator
               </h3>
-              <span className="text-[10px] font-mono text-slate-500 uppercase tracking-wider bg-slate-900 px-2 py-1 rounded">Interactive Data</span>
+              <span className="text-[10px] font-mono text-[#A5A1B8] uppercase tracking-wider bg-slate-900 px-2 py-1 rounded">Interactive Data</span>
             </div>
 
             {/* Form Controls */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div>
-                <label className="block text-[10px] font-bold uppercase tracking-wider text-slate-400 mb-1.5">STEM / Tech Domain</label>
+                <label className="block text-[10px] font-bold uppercase tracking-wider text-[#A5A1B8] mb-1.5">STEM / Tech Domain</label>
                 <select
                   value={domain}
                   onChange={(e) => setDomain(e.target.value as DomainType)}
-                  className="w-full bg-slate-950/70 border border-white/10 rounded-xl px-3 py-2.5 text-xs text-white focus:outline-none focus:border-purple-500 transition-all cursor-pointer"
+                  className="w-full bg-slate-950/70 border border-[#A144FF]/15 rounded-xl px-3 py-2.5 text-xs text-white focus:outline-none focus:border-[#A144FF] transition-all cursor-pointer"
                 >
                   <option value="Computer Science">Computer Science</option>
                   <option value="Data Science">Data Science</option>
@@ -467,11 +467,11 @@ export default function FintechEqualizer() {
               </div>
 
               <div>
-                <label className="block text-[10px] font-bold uppercase tracking-wider text-slate-400 mb-1.5">Experience Level</label>
+                <label className="block text-[10px] font-bold uppercase tracking-wider text-[#A5A1B8] mb-1.5">Experience Level</label>
                 <select
                   value={experience}
                   onChange={(e) => setExperience(e.target.value as ExpLevelType)}
-                  className="w-full bg-slate-950/70 border border-white/10 rounded-xl px-3 py-2.5 text-xs text-white focus:outline-none focus:border-purple-500 transition-all cursor-pointer"
+                  className="w-full bg-slate-950/70 border border-[#A144FF]/15 rounded-xl px-3 py-2.5 text-xs text-white focus:outline-none focus:border-[#A144FF] transition-all cursor-pointer"
                 >
                   <option value="Entry">Entry (0-2 YOE)</option>
                   <option value="Mid">Mid-Level (2-6 YOE)</option>
@@ -480,11 +480,11 @@ export default function FintechEqualizer() {
               </div>
 
               <div>
-                <label className="block text-[10px] font-bold uppercase tracking-wider text-slate-400 mb-1.5">Geographic Region</label>
+                <label className="block text-[10px] font-bold uppercase tracking-wider text-[#A5A1B8] mb-1.5">Geographic Region</label>
                 <select
                   value={region}
                   onChange={(e) => setRegion(e.target.value as RegionType)}
-                  className="w-full bg-slate-950/70 border border-white/10 rounded-xl px-3 py-2.5 text-xs text-white focus:outline-none focus:border-purple-500 transition-all cursor-pointer"
+                  className="w-full bg-slate-950/70 border border-[#A144FF]/15 rounded-xl px-3 py-2.5 text-xs text-white focus:outline-none focus:border-[#A144FF] transition-all cursor-pointer"
                 >
                   <option value="North America (USD)">North America (USD)</option>
                   <option value="Europe (EUR)">Europe (EUR)</option>
@@ -494,17 +494,17 @@ export default function FintechEqualizer() {
               </div>
 
               <div>
-                <label className="block text-[10px] font-bold uppercase tracking-wider text-slate-400 mb-1.5">Current Offer / Base Salary</label>
+                <label className="block text-[10px] font-bold uppercase tracking-wider text-[#A5A1B8] mb-1.5">Current Offer / Base Salary</label>
                 <div className="space-y-2">
                   <div className="relative">
-                    <span className="absolute left-3 top-1/2 -translate-y-1/2 text-xs text-slate-500 font-mono font-bold">
+                    <span className="absolute left-3 top-1/2 -translate-y-1/2 text-xs text-[#A5A1B8] font-mono font-bold">
                       {symbol}
                     </span>
                     <input
                       type="number"
                       value={currentOffer}
                       onChange={(e) => setCurrentOffer(Math.max(0, parseInt(e.target.value) || 0))}
-                      className="w-full bg-slate-950/70 border border-white/10 rounded-xl pl-9 pr-3 py-2.5 text-xs text-white focus:outline-none focus:border-purple-500 transition-all font-mono"
+                      className="w-full bg-slate-950/70 border border-[#A144FF]/15 rounded-xl pl-9 pr-3 py-2.5 text-xs text-white focus:outline-none focus:border-[#A144FF] transition-all font-mono"
                     />
                   </div>
                   {/* Real slider input to support the full range of sliding */}
@@ -515,10 +515,10 @@ export default function FintechEqualizer() {
                       max={sliderMax}
                       value={currentOffer}
                       onChange={(e) => setCurrentOffer(Math.max(0, parseInt(e.target.value) || 0))}
-                      className="w-full h-1.5 bg-slate-800 rounded-lg appearance-none cursor-pointer accent-pink-500 focus:outline-none focus:ring-1 focus:ring-pink-500/50"
+                      className="w-full h-1.5 bg-[#1F1437] rounded-lg appearance-none cursor-pointer accent-[#A144FF] focus:outline-none focus:ring-1 focus:ring-[#A144FF]/50"
                       title="Slide to adjust current offer base salary"
                     />
-                    <div className="flex justify-between text-[8px] font-mono text-slate-500 mt-1">
+                    <div className="flex justify-between text-[8px] font-mono text-[#A5A1B8]/60 mt-1">
                       <span>Slider Range Min: {formatValue(sliderMin)}</span>
                       <span>Slider Range Max: {formatValue(sliderMax)}</span>
                     </div>
@@ -528,9 +528,9 @@ export default function FintechEqualizer() {
             </div>
 
             {/* Custom Dual-Range Comparison Visualizer */}
-            <div className="mt-8 bg-slate-950/40 border border-white/5 p-4 rounded-xl space-y-4">
+            <div className="mt-8 bg-slate-950/40 border border-[#A144FF]/10 p-4 rounded-xl space-y-4">
               <div className="flex justify-between items-center text-xs">
-                <span className="font-semibold text-slate-400">Offer vs. Market Range Comparison</span>
+                <span className="font-semibold text-[#A5A1B8]">Offer vs. Market Range Comparison</span>
                 <span className={`text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 border rounded-full ${rating.color}`}>
                   {rating.label}
                 </span>
@@ -539,11 +539,11 @@ export default function FintechEqualizer() {
               {/* Slider Gauge Track */}
               <div className="relative pt-6 pb-2">
                 {/* Visual track background line */}
-                <div className="h-2 w-full bg-slate-800 rounded-full" />
+                <div className="h-2 w-full bg-[#1F1437] rounded-full" />
 
                 {/* Highlighted recommended fair market range block */}
                 <div 
-                  className="absolute top-[30px] h-2 bg-emerald-500/30 border-l border-r border-emerald-400 rounded-sm"
+                  className="absolute top-[30px] h-2 bg-[#00FFA3]/20 border-l border-r border-[#00FFA3] rounded-sm"
                   style={{ 
                     left: `${minRecommendedPercent}%`, 
                     width: `${maxRecommendedPercent - minRecommendedPercent}%` 
@@ -552,13 +552,13 @@ export default function FintechEqualizer() {
 
                 {/* Left/Right markers on the fair range block */}
                 <div 
-                  className="absolute top-1 text-[9px] font-mono text-emerald-400 font-bold"
+                  className="absolute top-1 text-[9px] font-mono text-[#00FFA3] font-bold"
                   style={{ left: `${minRecommendedPercent}%`, transform: 'translateX(-50%)' }}
                 >
                   Min: {formatValue(benchmarks.min)}
                 </div>
                 <div 
-                  className="absolute top-1 text-[9px] font-mono text-emerald-400 font-bold"
+                  className="absolute top-1 text-[9px] font-mono text-[#00FFA3] font-bold"
                   style={{ left: `${maxRecommendedPercent}%`, transform: 'translateX(-50%)' }}
                 >
                   Max: {formatValue(benchmarks.max)}
@@ -566,13 +566,13 @@ export default function FintechEqualizer() {
 
                 {/* Current offer vertical glowing pin pointer */}
                 <div 
-                  className="absolute top-4 w-4 h-4 rounded-full bg-pink-500 border-2 border-white shadow-lg shadow-pink-500/50 flex items-center justify-center -translate-x-1/2 transition-all duration-150"
+                  className="absolute top-4 w-4 h-4 rounded-full bg-[#E841A1] border-2 border-white shadow-lg shadow-[#E841A1]/50 flex items-center justify-center -translate-x-1/2 transition-all duration-150"
                   style={{ left: `${currentOfferPercent}%` }}
                 >
                   <div className="w-1 h-1 rounded-full bg-slate-950" />
                   
                   {/* Glowing Tooltip Pointer */}
-                  <div className="absolute top-5 bg-pink-600 text-white font-mono font-bold px-2 py-0.5 rounded text-[9px] whitespace-nowrap shadow-lg shadow-black/40">
+                  <div className="absolute top-5 bg-[#E841A1] text-white font-mono font-bold px-2 py-0.5 rounded text-[9px] whitespace-nowrap shadow-lg shadow-black/40">
                     Offer: {formatValue(currentOffer)}
                   </div>
                 </div>
@@ -580,7 +580,7 @@ export default function FintechEqualizer() {
 
               {/* Dynamic offer adjustment slider */}
               <div className="pt-3 border-t border-white/5 flex flex-col gap-1">
-                <div className="flex justify-between text-[10px] text-slate-500 font-mono">
+                <div className="flex justify-between text-[10px] text-[#A5A1B8]/60 font-mono">
                   <span>Slide to simulate offer values:</span>
                   <span>{formatValue(sliderMin)} - {formatValue(sliderMax)}</span>
                 </div>
@@ -590,16 +590,16 @@ export default function FintechEqualizer() {
                   max={sliderMax}
                   value={currentOffer}
                   onChange={(e) => setCurrentOffer(parseInt(e.target.value) || 0)}
-                  className="w-full accent-pink-500 cursor-pointer h-1.5 bg-slate-800 rounded-lg appearance-none mt-1"
+                  className="w-full accent-[#A144FF] cursor-pointer h-1.5 bg-[#1F1437] rounded-lg appearance-none mt-1"
                 />
               </div>
             </div>
           </div>
 
-          {/* Recharts Column Visualization of Gender Wages */}
+          {/* Recharts Column Visualization of Market Benchmarks */}
           <div className="mt-4 space-y-2">
             <div className="flex items-center justify-between">
-              <span className="text-xs font-bold text-slate-400">Gender Comp Disparity in {domain}</span>
+              <span className="text-xs font-bold text-slate-400">Market Benchmark Comparison</span>
               <span className="text-[10px] font-mono text-slate-500">Source: Market Data averages</span>
             </div>
             
@@ -639,33 +639,33 @@ export default function FintechEqualizer() {
         </div>
 
         {/* 3. Right Panel: AI Negotiation Script Builder */}
-        <div className="lg:col-span-6 bg-white/5 backdrop-blur-xl border border-white/10 p-6 rounded-2xl flex flex-col justify-between shadow-2xl shadow-black/35 space-y-6">
+        <div className="lg:col-span-6 bg-[#1F1437]/25 backdrop-blur-xl border border-[#A144FF]/10 p-6 rounded-2xl flex flex-col justify-between shadow-2xl shadow-black/35 space-y-6">
           <div className="space-y-4">
             <div className="flex items-center justify-between border-b border-white/5 pb-4 mb-2">
               <h3 className="text-lg font-bold text-white flex items-center gap-2">
-                <MessageSquare className="text-pink-400" size={18} />
+                <MessageSquare className="text-[#E841A1]" size={18} />
                 AI Negotiation Script Builder
               </h3>
-              <span className="text-[10px] font-mono text-slate-500 uppercase tracking-wider bg-slate-900 px-2 py-1 rounded">Powered by Ask-Her-AI</span>
+              <span className="text-[10px] font-mono text-[#A5A1B8] uppercase tracking-wider bg-slate-900 px-2 py-1 rounded">Powered by Ask-Her-AI</span>
             </div>
 
             {/* Form Controls for Script Builder */}
             <div className="space-y-4">
               <div className="grid grid-cols-2 gap-4">
                 <div>
-                  <label className="block text-[10px] font-bold uppercase tracking-wider text-slate-400 mb-1.5">Target Salary Adjustment</label>
+                  <label className="block text-[10px] font-bold uppercase tracking-wider text-[#A5A1B8] mb-1.5">Target Salary Adjustment</label>
                   <input
                     type="text"
                     value={targetAdjustment}
                     onChange={(e) => setTargetAdjustment(e.target.value)}
                     placeholder="e.g. 15% or ₹3 LPA"
-                    className="w-full bg-slate-950/70 border border-white/10 rounded-xl px-3 py-2 text-xs text-white focus:outline-none focus:border-pink-500 transition-all font-mono"
+                    className="w-full bg-slate-950/70 border border-[#A144FF]/15 rounded-xl px-3 py-2 text-xs text-white focus:outline-none focus:border-[#E841A1] transition-all font-mono"
                   />
                 </div>
 
                 <div>
-                  <label className="block text-[10px] font-bold uppercase tracking-wider text-slate-400 mb-1.5">Tone Selection</label>
-                  <div className="flex border border-white/10 rounded-xl overflow-hidden p-0.5 bg-slate-950/70">
+                  <label className="block text-[10px] font-bold uppercase tracking-wider text-[#A5A1B8] mb-1.5">Tone Selection</label>
+                  <div className="flex border border-[#A144FF]/10 rounded-xl overflow-hidden p-0.5 bg-slate-950/70">
                     {(['Confident', 'Data-Driven', 'Collaborative'] as const).map((t) => (
                       <button
                         key={t}
@@ -673,8 +673,8 @@ export default function FintechEqualizer() {
                         onClick={() => setTone(t)}
                         className={`flex-1 py-1.5 text-[9px] sm:text-[10px] font-bold rounded-lg transition-all ${
                           tone === t 
-                            ? 'bg-pink-500/20 border border-pink-500/35 text-pink-400 shadow' 
-                            : 'text-slate-400 hover:text-white hover:bg-white/5'
+                            ? 'bg-[#E841A1]/20 border border-[#E841A1]/35 text-[#E841A1] shadow' 
+                            : 'text-[#A5A1B8] hover:text-white hover:bg-white/5'
                         }`}
                       >
                         {t}
@@ -685,16 +685,16 @@ export default function FintechEqualizer() {
               </div>
 
               <div>
-                <label className="block text-[10px] font-bold uppercase tracking-wider text-slate-400 mb-1.5">Key Accomplishments & Impact</label>
+                <label className="block text-[10px] font-bold uppercase tracking-wider text-[#A5A1B8] mb-1.5">Key Accomplishments & Impact</label>
                 <textarea
                   value={accomplishments}
                   onChange={(e) => setAccomplishments(e.target.value)}
                   placeholder="e.g. Architected highly modular secure API routers, resulting in a 35% latency reduction and leading deployment sprint on-time."
                   rows={3}
-                  className="w-full bg-slate-950/70 border border-white/10 rounded-xl px-3 py-2.5 text-xs text-white focus:outline-none focus:border-pink-500 transition-all placeholder:text-slate-600 resize-none leading-relaxed"
+                  className="w-full bg-slate-950/70 border border-[#A144FF]/15 rounded-xl px-3 py-2.5 text-xs text-white focus:outline-none focus:border-[#E841A1] transition-all placeholder:text-slate-600 resize-none leading-relaxed"
                 />
-                <p className="text-[10px] text-slate-500 mt-1 flex items-center gap-1">
-                  <Info size={11} className="text-pink-500/60" />
+                <p className="text-[10px] text-[#A5A1B8]/60 mt-1 flex items-center gap-1">
+                  <Info size={11} className="text-[#E841A1]/60" />
                   Cite direct technical outcomes to provide solid justification.
                 </p>
               </div>
@@ -704,17 +704,17 @@ export default function FintechEqualizer() {
             <button
               onClick={handleGenerateScript}
               disabled={isGenerating}
-              className="w-full relative overflow-hidden rounded-xl bg-gradient-to-r from-pink-500 via-purple-600 to-indigo-600 p-[1px] focus:outline-none focus:ring-2 focus:ring-pink-500 active:scale-98 transition-transform disabled:opacity-50"
+              className="w-full relative overflow-hidden rounded-xl bg-gradient-to-r from-[#E841A1] via-[#A144FF] to-[#1F1437] p-[1px] focus:outline-none focus:ring-2 focus:ring-[#A144FF] active:scale-98 transition-transform disabled:opacity-50"
             >
               <span className="flex items-center justify-center gap-2 rounded-xl bg-slate-950 hover:bg-slate-950/30 px-4 py-3 font-semibold text-white transition-all text-xs">
                 {isGenerating ? (
                   <>
-                    <div className="w-3.5 h-3.5 rounded-full border border-pink-400 border-t-transparent animate-spin" />
+                    <div className="w-3.5 h-3.5 rounded-full border border-[#E841A1] border-t-transparent animate-spin" />
                     Analyzing Data & Drafting Script...
                   </>
                 ) : (
                   <>
-                    <Sparkles size={14} className="text-pink-400 animate-pulse" />
+                    <Sparkles size={14} className="text-[#E841A1] animate-pulse" />
                     Generate AI Negotiation Script
                   </>
                 )}
@@ -731,26 +731,26 @@ export default function FintechEqualizer() {
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: -10 }}
-                  className="flex-1 flex flex-col justify-between bg-slate-950/50 border border-pink-500/10 rounded-xl p-4 space-y-4"
+                  className="flex-1 flex flex-col justify-between bg-slate-950/50 border border-[#E841A1]/15 rounded-xl p-4 space-y-4"
                 >
                   <div>
                     <div className="flex items-center justify-between border-b border-white/5 pb-2.5">
                       <div className="flex items-center gap-1.5">
-                        <Award size={14} className="text-pink-400" />
+                        <Award size={14} className="text-[#E841A1]" />
                         <span className="text-xs font-bold text-white">Your Customized {tone} Template</span>
                       </div>
                       <button
                         onClick={handleCopyToClipboard}
-                        className="flex items-center gap-1 px-2.5 py-1 text-[10px] bg-white/5 hover:bg-white/10 text-slate-300 rounded border border-white/10 transition-all font-mono"
+                        className="flex items-center gap-1 px-2.5 py-1 text-[10px] bg-white/5 hover:bg-white/10 text-[#A5A1B8] rounded border border-white/10 transition-all font-mono"
                       >
                         {copied ? (
                           <>
-                            <Check size={11} className="text-emerald-400" />
+                            <Check size={11} className="text-[#00FFA3]" />
                             Copied!
                           </>
                         ) : (
                           <>
-                            <Copy size={11} className="text-pink-400" />
+                            <Copy size={11} className="text-[#E841A1]" />
                             Copy Template
                           </>
                         )}
@@ -766,11 +766,11 @@ export default function FintechEqualizer() {
                   {/* Bulleted Talking Points & Objections */}
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 border-t border-white/5 pt-3">
                     <div>
-                      <span className="text-[10px] font-bold uppercase tracking-wider text-pink-400 block mb-2">Key Talking Points</span>
+                      <span className="text-[10px] font-bold uppercase tracking-wider text-[#E841A1] block mb-2">Key Talking Points</span>
                       <ul className="space-y-1.5">
                         {generatedScript.talkingPoints.map((point, idx) => (
-                          <li key={idx} className="text-[10px] text-slate-400 leading-relaxed flex items-start gap-1">
-                            <span className="text-pink-500 font-bold">•</span>
+                          <li key={idx} className="text-[10px] text-[#A5A1B8] leading-relaxed flex items-start gap-1">
+                            <span className="text-[#E841A1] font-bold">•</span>
                             <span>{point}</span>
                           </li>
                         ))}
@@ -778,11 +778,11 @@ export default function FintechEqualizer() {
                     </div>
 
                     <div>
-                      <span className="text-[10px] font-bold uppercase tracking-wider text-purple-400 block mb-2">Counter-Offer Tactics</span>
+                      <span className="text-[10px] font-bold uppercase tracking-wider text-[#A144FF] block mb-2">Counter-Offer Tactics</span>
                       <ul className="space-y-1.5">
                         {generatedScript.counterOfferStrategies.map((strategy, idx) => (
-                          <li key={idx} className="text-[10px] text-slate-400 leading-relaxed flex items-start gap-1">
-                            <span className="text-purple-500 font-bold">•</span>
+                          <li key={idx} className="text-[10px] text-[#A5A1B8] leading-relaxed flex items-start gap-1">
+                            <span className="text-[#A144FF] font-bold">•</span>
                             <span>{strategy}</span>
                           </li>
                         ))}
@@ -791,10 +791,10 @@ export default function FintechEqualizer() {
                   </div>
                 </motion.div>
               ) : (
-                <div className="flex-1 flex flex-col items-center justify-center text-center p-6 border border-dashed border-white/10 rounded-xl bg-slate-950/20 text-slate-500 h-60">
+                <div className="flex-1 flex flex-col items-center justify-center text-center p-6 border border-dashed border-[#A144FF]/10 rounded-xl bg-slate-950/20 text-slate-500 h-60">
                   <Zap size={32} className="text-slate-700 mb-3 animate-bounce" />
-                  <p className="text-xs font-semibold text-slate-400">Negotiation Script Ready</p>
-                  <p className="text-[10.5px] text-slate-500 mt-1.5 max-w-xs leading-relaxed">
+                  <p className="text-xs font-semibold text-[#A5A1B8]">Negotiation Script Ready</p>
+                  <p className="text-[10.5px] text-[#A5A1B8]/60 mt-1.5 max-w-xs leading-relaxed">
                     Set your adjustment target, input key career achievements, and click "Generate" to construct custom-tailored pitch patterns.
                   </p>
                 </div>

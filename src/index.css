@@ -8,13 +8,15 @@
   --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
 
   /* Premium Semantic Design Tokens */
-  --color-canvas-bg: #0b0f17;
-  --color-text-primary: #f4f4f5;
-  --color-text-secondary: #a1a1aa;
-  --color-accent-growth: #34d399;
-  --color-accent-interactive: #8b5cf6;
+  --color-canvas-bg: #0b0a11;
+  --color-brand-purple: #a144ff;
+  --color-accent-purple: #1f1437;
+  --color-financial-green: #00ffa3;
+  --color-highlight-magenta: #e841a1;
+  --color-primary-text: #ffffff;
+  --color-secondary-text: #a5a1b8;
   --color-border-overlay: rgba(255, 255, 255, 0.05);
-  --color-card-bg: rgba(9, 9, 11, 0.4);
+  --color-card-bg: rgba(31, 20, 55, 0.2);
 
   --animate-scroll: scroll 28s linear infinite;
 
@@ -37,7 +39,7 @@ body {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  background-color: #0b0f17;
+  background-color: #0b0a11;
 }
 
 /* Ensure all elements default to border-box to avoid padding-based size blowouts */

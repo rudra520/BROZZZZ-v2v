@@ -545,20 +545,20 @@ Keep the format highly organized and under 250 words.`;
     <div className="w-full text-white" id="edugrant-hub-section">
       {/* Title & Vision block */}
       <div className="text-center max-w-3xl mx-auto mb-10">
-        <div className="inline-flex items-center gap-2 px-3 py-1 bg-gradient-to-r from-purple-500/10 to-pink-500/10 border border-purple-500/20 rounded-full text-pink-400 text-xs font-semibold mb-3">
-          <Award size={14} className="text-pink-400" />
+        <div className="inline-flex items-center gap-2 px-3 py-1 bg-[#1F1437]/60 border border-[#A144FF]/25 rounded-full text-[#A5A1B8] text-xs font-semibold mb-3">
+          <Award size={14} className="text-[#E841A1]" />
           EduGrant & STEM Scholarship Finder
         </div>
-        <h2 className="text-3xl font-extrabold tracking-tight sm:text-4xl bg-gradient-to-r from-white via-slate-200 to-slate-400 bg-clip-text text-transparent">
+        <h2 className="text-3xl font-extrabold tracking-tight sm:text-4xl bg-gradient-to-r from-white via-slate-200 to-[#A5A1B8] bg-clip-text text-transparent">
           STEM Scholarship Directory
         </h2>
-        <p className="mt-3 text-sm text-slate-400">
+        <p className="mt-3 text-sm text-[#A5A1B8]">
           Explore fully vetted travel grants, academic scholarships, and deep-tech fellowships. Run our AI-powered eligibility checker to benchmark your profile instantly.
         </p>
       </div>
 
       {/* 1. Search & Smart Filter Header */}
-      <div className="bg-white/[0.02] backdrop-blur-xl border border-white/10 p-6 rounded-2xl shadow-xl shadow-black/25 mb-8 space-y-6">
+      <div className="bg-[#1F1437]/25 backdrop-blur-xl border border-[#A144FF]/10 p-6 rounded-2xl shadow-xl shadow-black/25 mb-8 space-y-6">
         {/* Search Input bar */}
         <div className="relative">
           <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-500" size={18} />
@@ -567,14 +567,14 @@ Keep the format highly organized and under 250 words.`;
             value={search}
             onChange={(e) => setSearch(e.target.value)}
             placeholder="Search Grace Hopper, IEEE WIE, research fellowships..."
-            className="w-full pl-11 pr-4 py-3 bg-slate-900/60 border border-white/10 rounded-xl text-white text-sm focus:outline-none focus:border-pink-500 transition-all placeholder:text-slate-500 shadow-inner"
+            className="w-full pl-11 pr-4 py-3 bg-slate-900/60 border border-[#A144FF]/15 rounded-xl text-white text-sm focus:outline-none focus:border-[#A144FF] transition-all placeholder:text-slate-500 shadow-inner"
             id="grant-search-input"
           />
         </div>
 
         {/* Quick Category Chips */}
         <div>
-          <span className="block text-[10px] font-bold uppercase tracking-wider text-slate-400 mb-2.5">Quick Category Chips</span>
+          <span className="block text-[10px] font-bold uppercase tracking-wider text-[#A5A1B8] mb-2.5">Quick Category Chips</span>
           <div className="flex flex-wrap gap-2">
             {categoryChips.map(cat => (
               <button
@@ -583,8 +583,8 @@ Keep the format highly organized and under 250 words.`;
                 onClick={() => setSelectedCategory(cat)}
                 className={`px-3.5 py-1.5 text-xs font-medium rounded-full border transition-all ${
                   selectedCategory === cat 
-                    ? 'bg-gradient-to-r from-purple-500/25 to-pink-500/25 border-pink-500/50 text-pink-300 font-bold shadow-sm shadow-pink-500/5 scale-105' 
-                    : 'bg-white/5 border-white/5 text-slate-400 hover:bg-white/10'
+                    ? 'bg-[#E841A1]/20 border border-[#E841A1]/40 text-[#E841A1] font-bold shadow-sm shadow-[#E841A1]/5 scale-105' 
+                    : 'bg-[#1F1437]/40 border border-[#A144FF]/10 text-[#A5A1B8] hover:bg-[#1F1437]/65'
                 }`}
               >
                 {cat === 'All' ? 'All Opportunities' : cat}
@@ -597,14 +597,14 @@ Keep the format highly organized and under 250 words.`;
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 border-t border-white/5 pt-5">
           {/* Deadline Dropdown */}
           <div className="relative">
-            <label className="block text-[10px] font-bold uppercase tracking-wider text-slate-400 mb-1.5 flex items-center gap-1">
-              <Calendar size={11} className="text-pink-500" /> Deadline Date
+            <label className="block text-[10px] font-bold uppercase tracking-wider text-[#A5A1B8] mb-1.5 flex items-center gap-1">
+              <Calendar size={11} className="text-[#E841A1]" /> Deadline Date
             </label>
             <div className="relative">
               <select
                 value={selectedDeadline}
                 onChange={(e) => setSelectedDeadline(e.target.value)}
-                className="w-full bg-slate-900/80 border border-white/10 rounded-xl px-3.5 py-2.5 text-xs text-slate-200 focus:outline-none focus:border-pink-500 appearance-none cursor-pointer pr-8 font-semibold"
+                className="w-full bg-[#1F1437]/60 border border-[#A144FF]/15 rounded-xl px-3.5 py-2.5 text-xs text-slate-200 focus:outline-none focus:border-[#A144FF] appearance-none cursor-pointer pr-8 font-semibold"
               >
                 <option value="All">All Dates</option>
                 <option value="Within 15 Days">Within 15 Days</option>
@@ -617,14 +617,14 @@ Keep the format highly organized and under 250 words.`;
 
           {/* Education Level Dropdown */}
           <div className="relative">
-            <label className="block text-[10px] font-bold uppercase tracking-wider text-slate-400 mb-1.5 flex items-center gap-1">
-              <GraduationCap size={11} className="text-purple-500" /> Education Level
+            <label className="block text-[10px] font-bold uppercase tracking-wider text-[#A5A1B8] mb-1.5 flex items-center gap-1">
+              <GraduationCap size={11} className="text-[#A144FF]" /> Education Level
             </label>
             <div className="relative">
               <select
                 value={selectedEducationLevel}
                 onChange={(e) => setSelectedEducationLevel(e.target.value)}
-                className="w-full bg-slate-900/80 border border-white/10 rounded-xl px-3.5 py-2.5 text-xs text-slate-200 focus:outline-none focus:border-pink-500 appearance-none cursor-pointer pr-8 font-semibold"
+                className="w-full bg-[#1F1437]/60 border border-[#A144FF]/15 rounded-xl px-3.5 py-2.5 text-xs text-slate-200 focus:outline-none focus:border-[#A144FF] appearance-none cursor-pointer pr-8 font-semibold"
               >
                 <option value="All">All Education Levels</option>
                 <option value="Undergraduate">Undergraduate</option>
@@ -638,14 +638,14 @@ Keep the format highly organized and under 250 words.`;
 
           {/* Funding Amount Dropdown */}
           <div className="relative">
-            <label className="block text-[10px] font-bold uppercase tracking-wider text-slate-400 mb-1.5 flex items-center gap-1">
-              <DollarSign size={11} className="text-emerald-500" /> Funding Amount
+            <label className="block text-[10px] font-bold uppercase tracking-wider text-[#A5A1B8] mb-1.5 flex items-center gap-1">
+              <DollarSign size={11} className="text-[#00FFA3]" /> Funding Amount
             </label>
             <div className="relative">
               <select
                 value={selectedAmountRange}
                 onChange={(e) => setSelectedAmountRange(e.target.value)}
-                className="w-full bg-slate-900/80 border border-white/10 rounded-xl px-3.5 py-2.5 text-xs text-slate-200 focus:outline-none focus:border-pink-500 appearance-none cursor-pointer pr-8 font-semibold"
+                className="w-full bg-[#1F1437]/60 border border-[#A144FF]/15 rounded-xl px-3.5 py-2.5 text-xs text-slate-200 focus:outline-none focus:border-[#A144FF] appearance-none cursor-pointer pr-8 font-semibold"
               >
                 <option value="All">All Funding Amounts</option>
                 <option value="Under $1,500">Under $1,500</option>
@@ -671,7 +671,7 @@ Keep the format highly organized and under 250 words.`;
                 whileHover={{ 
                   y: -6, 
                   scale: 1.015,
-                  borderColor: "rgba(244, 63, 94, 0.45)",
+                  borderColor: "#A144FF",
                   boxShadow: "0 20px 25px -5px rgba(0, 0, 0, 0.4), 0 10px 10px -5px rgba(0, 0, 0, 0.4)"
                 }}
                 whileTap={{ 
@@ -683,18 +683,18 @@ Keep the format highly organized and under 250 words.`;
                   stiffness: 400,
                   damping: 22
                 }}
-                className="bg-white/[0.03] backdrop-blur-xl border border-white/10 rounded-2xl p-5 relative flex flex-col justify-between overflow-hidden shadow-lg shadow-black/20 group cursor-pointer"
+                className="bg-[#1F1437]/25 backdrop-blur-xl border border-[#A144FF]/10 rounded-2xl p-5 relative flex flex-col justify-between overflow-hidden shadow-lg shadow-black/20 group cursor-pointer"
               >
                 {/* Background soft glow accent on card hover */}
-                <div className="absolute top-0 right-0 w-32 h-32 bg-pink-500/5 rounded-full blur-3xl group-hover:bg-pink-500/10 transition-colors pointer-events-none" />
+                <div className="absolute top-0 right-0 w-32 h-32 bg-[#A144FF]/5 rounded-full blur-3xl group-hover:bg-[#A144FF]/10 transition-colors pointer-events-none" />
 
                 <div>
                   {/* Category Badge */}
                   <div className="flex items-center justify-between gap-2">
-                    <span className="px-2.5 py-1 bg-pink-500/10 border border-pink-500/20 rounded-full text-[10px] text-pink-300 font-mono tracking-wider uppercase font-semibold">
+                    <span className="px-2.5 py-1 bg-[#E841A1]/10 border border-[#E841A1]/20 rounded-full text-[10px] text-[#E841A1] font-mono tracking-wider uppercase font-semibold">
                       {grant.category}
                     </span>
-                    <span className="text-[10px] text-slate-500 font-semibold font-mono">
+                    <span className="text-[10px] text-[#A5A1B8]/60 font-semibold font-mono">
                       {grant.educationLevel}
                     </span>
                   </div>
@@ -702,39 +702,39 @@ Keep the format highly organized and under 250 words.`;
                   {/* Title & Funder Logo row */}
                   <div className="flex items-center gap-3.5 mt-4 mb-4 border-b border-white/5 pb-4">
                     {/* Stylized Logo Block */}
-                    <div className="w-11 h-11 rounded-xl bg-gradient-to-tr from-purple-500/20 to-pink-500/20 border border-white/10 flex items-center justify-center font-extrabold text-pink-400 font-mono text-xs shadow-md tracking-wider">
+                    <div className="w-11 h-11 rounded-xl bg-gradient-to-tr from-[#A144FF]/20 to-[#E841A1]/20 border border-[#A144FF]/10 flex items-center justify-center font-extrabold text-[#E841A1] font-mono text-xs shadow-md tracking-wider">
                       {grant.logoUrl || "STEM"}
                     </div>
                     <div className="flex-1">
-                      <h3 className="text-sm font-bold text-white group-hover:text-pink-300 transition-all leading-snug line-clamp-2 min-h-[2.5rem]">
+                      <h3 className="text-sm font-bold text-white group-hover:text-[#E841A1] transition-all leading-snug line-clamp-2 min-h-[2.5rem]">
                         {grant.title}
                       </h3>
-                      <p className="text-[11px] text-slate-400 mt-0.5 leading-none font-semibold">
+                      <p className="text-[11px] text-[#A5A1B8] mt-0.5 leading-none font-semibold">
                         {grant.provider}
                       </p>
                     </div>
                   </div>
 
                   {/* Key Metrics row */}
-                  <div className="grid grid-cols-3 gap-2 py-3 bg-white/[0.02] border border-white/5 rounded-xl px-2 mb-4 font-mono text-[9px] text-slate-400 text-center">
+                  <div className="grid grid-cols-3 gap-2 py-3 bg-[#1F1437]/45 border border-[#A144FF]/5 rounded-xl px-2 mb-4 font-mono text-[9px] text-[#A5A1B8] text-center">
                     <div className="border-r border-white/5">
-                      <span className="block text-[8px] text-slate-500 font-bold uppercase tracking-wider mb-0.5">Amount</span>
-                      <span className="font-extrabold text-emerald-400 text-xs">${grant.amount.toLocaleString()}</span>
+                      <span className="block text-[8px] text-[#A5A1B8]/60 font-bold uppercase tracking-wider mb-0.5">Amount</span>
+                      <span className="font-extrabold text-[#00FFA3] text-xs">${grant.amount.toLocaleString()}</span>
                     </div>
                     <div className="border-r border-white/5">
-                      <span className="block text-[8px] text-slate-500 font-bold uppercase tracking-wider mb-0.5">Deadline</span>
-                      <span className="font-bold text-pink-400 text-xs">In {grant.deadlineDays} Days</span>
+                      <span className="block text-[8px] text-[#A5A1B8]/60 font-bold uppercase tracking-wider mb-0.5">Deadline</span>
+                      <span className="font-bold text-[#E841A1] text-xs">In {grant.deadlineDays} Days</span>
                     </div>
                     <div>
-                      <span className="block text-[8px] text-slate-500 font-bold uppercase tracking-wider mb-0.5">Tier</span>
-                      <span className="font-bold text-purple-400 text-xs truncate max-w-full block">
+                      <span className="block text-[8px] text-[#A5A1B8]/60 font-bold uppercase tracking-wider mb-0.5">Tier</span>
+                      <span className="font-bold text-[#A144FF] text-xs truncate max-w-full block">
                         {grant.educationLevel === 'All Levels' ? 'All' : grant.educationLevel}
                       </span>
                     </div>
                   </div>
 
                   {/* Eligibility snippet */}
-                  <p className="text-xs text-slate-300 line-clamp-2 min-h-[2.5rem] leading-relaxed mb-5">
+                  <p className="text-xs text-[#A5A1B8] line-clamp-2 min-h-[2.5rem] leading-relaxed mb-5">
                     <span className="font-semibold text-slate-400">Eligibility:</span> {grant.eligibility}
                   </p>
                 </div>
@@ -744,9 +744,9 @@ Keep the format highly organized and under 250 words.`;
                   <button
                     type="button"
                     onClick={() => handleQuickMatch(grant)}
-                    className="flex-1 bg-gradient-to-r from-purple-500/10 to-pink-500/10 hover:from-purple-500/20 hover:to-pink-500/20 border border-purple-500/25 hover:border-pink-500/40 text-pink-300 font-bold text-xs py-2.5 px-3 rounded-xl transition-all duration-150 active:scale-95 flex items-center justify-center gap-1.5"
+                    className="flex-1 bg-[#E841A1]/10 hover:bg-[#E841A1]/20 border border-[#E841A1]/25 hover:border-[#E841A1]/40 text-[#E841A1] font-bold text-xs py-2.5 px-3 rounded-xl transition-all duration-150 active:scale-95 flex items-center justify-center gap-1.5"
                   >
-                    <Sparkles size={13} className="text-pink-400 animate-pulse" />
+                    <Sparkles size={13} className="text-[#E841A1] animate-pulse" />
                     Quick Match
                   </button>
                   <button

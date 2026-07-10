@@ -362,28 +362,28 @@ export default function AICareerPath() {
     <div className="w-full text-white space-y-10" id="ai-career-pathway-engine">
       {/* Title Header Section */}
       <div className="text-center max-w-4xl mx-auto">
-        <div className="inline-flex items-center gap-2 px-3 py-1 bg-gradient-to-r from-pink-500/10 to-purple-500/10 border border-purple-500/30 rounded-full text-pink-300 text-xs font-semibold mb-4 tracking-wider animate-pulse uppercase">
-          <Sparkles size={14} className="text-pink-400" />
+        <div className="inline-flex items-center gap-2 px-3 py-1 bg-[#1F1437]/60 border border-[#A144FF]/25 rounded-full text-[#A5A1B8] text-xs font-semibold mb-4 tracking-wider animate-pulse uppercase">
+          <Sparkles size={14} className="text-[#E841A1]" />
           Empowerment Engine • UN SDG 5 Partner
         </div>
-        <h2 className="text-3xl font-extrabold tracking-tight sm:text-5xl bg-gradient-to-r from-white via-slate-100 to-slate-400 bg-clip-text text-transparent">
-          AI STEM Career Pathway Engine
+        <h2 className="text-3xl font-extrabold tracking-tight sm:text-5xl bg-gradient-to-r from-white via-slate-100 to-[#A5A1B8] bg-clip-text text-transparent">
+          HorizonPath AI
         </h2>
-        <p className="mt-3 text-sm sm:text-base text-slate-400 max-w-2xl mx-auto leading-relaxed">
+        <p className="mt-3 text-sm sm:text-base text-[#A5A1B8] max-w-2xl mx-auto leading-relaxed">
           Break systemic barriers and claim your space in artificial intelligence. Leverage custom-targeted 90-day learning checkpoints, interactive milestone trackers, and vetted open-source technical databases.
         </p>
       </div>
 
       {/* Control Panel: Career Objective Input Header */}
-      <div className="bg-white/5 backdrop-blur-xl border border-white/10 p-6 rounded-2xl shadow-xl shadow-black/20 relative overflow-hidden">
+      <div className="bg-[#1F1437]/25 backdrop-blur-xl border border-[#A144FF]/10 p-6 rounded-2xl shadow-xl shadow-black/20 relative overflow-hidden">
         {/* Glow effect */}
-        <div className="absolute top-0 right-0 w-32 h-32 bg-purple-500/10 rounded-full blur-3xl pointer-events-none" />
-        <div className="absolute bottom-0 left-0 w-32 h-32 bg-pink-500/5 rounded-full blur-3xl pointer-events-none" />
+        <div className="absolute top-0 right-0 w-32 h-32 bg-[#A144FF]/5 rounded-full blur-3xl pointer-events-none" />
+        <div className="absolute bottom-0 left-0 w-32 h-32 bg-[#E841A1]/5 rounded-full blur-3xl pointer-events-none" />
 
         <div className="relative z-10 space-y-6">
           <div className="flex items-center gap-2 border-b border-white/5 pb-3">
-            <Compass className="text-pink-400" size={20} />
-            <h3 className="text-sm font-bold uppercase tracking-wider text-slate-200">
+            <Compass className="text-[#E841A1]" size={20} />
+            <h3 className="text-sm font-bold uppercase tracking-wider text-white">
               Set Your Aspirational Pathway Targets
             </h3>
           </div>
@@ -391,14 +391,14 @@ export default function AICareerPath() {
           <div className="grid grid-cols-1 md:grid-cols-12 gap-5 items-end">
             {/* Current Role Select */}
             <div className="md:col-span-4 space-y-2 text-left">
-              <label className="block text-xs font-bold uppercase tracking-wider text-slate-400 font-mono">
+              <label className="block text-xs font-bold uppercase tracking-wider text-[#A5A1B8] font-mono">
                 Current Standing / Role
               </label>
               <div className="relative">
                 <select
                   value={currentRole}
                   onChange={(e) => setCurrentRole(e.target.value)}
-                  className="w-full appearance-none bg-[#0B0F17]/90 border border-white/15 hover:border-white/30 rounded-xl px-4 py-3 text-sm text-slate-200 focus:outline-none focus:border-purple-500 transition-all cursor-pointer font-medium"
+                  className="w-full appearance-none bg-[#0B0F17]/90 border border-[#A144FF]/15 hover:border-[#A144FF]/30 rounded-xl px-4 py-3 text-sm text-slate-200 focus:outline-none focus:border-[#A144FF] transition-all cursor-pointer font-medium"
                 >
                   {CURRENT_ROLE_OPTIONS.map((role) => (
                     <option key={role} value={role} className="bg-[#0B0F17] text-white">
@@ -414,19 +414,19 @@ export default function AICareerPath() {
 
             {/* Stepper Arrow Indicator */}
             <div className="hidden md:flex md:col-span-1 justify-center pb-3">
-              <ArrowRight className="text-purple-400 animate-pulse" size={20} />
+              <ArrowRight className="text-[#A144FF] animate-pulse" size={20} />
             </div>
 
             {/* Target Role Select */}
             <div className="md:col-span-4 space-y-2 text-left">
-              <label className="block text-xs font-bold uppercase tracking-wider text-slate-400 font-mono">
+              <label className="block text-xs font-bold uppercase tracking-wider text-[#A5A1B8] font-mono">
                 Aspirational Target Role
               </label>
               <div className="relative">
                 <select
                   value={targetRole}
                   onChange={(e) => setTargetRole(e.target.value)}
-                  className="w-full appearance-none bg-[#0B0F17]/90 border border-white/15 hover:border-white/30 rounded-xl px-4 py-3 text-sm text-slate-200 focus:outline-none focus:border-purple-500 transition-all cursor-pointer font-medium"
+                  className="w-full appearance-none bg-[#0B0F17]/90 border border-[#A144FF]/15 hover:border-[#A144FF]/30 rounded-xl px-4 py-3 text-sm text-slate-200 focus:outline-none focus:border-[#A144FF] transition-all cursor-pointer font-medium"
                 >
                   {TARGET_ROLE_OPTIONS.map((role) => (
                     <option key={role} value={role} className="bg-[#0B0F17] text-white">
@@ -446,7 +446,7 @@ export default function AICareerPath() {
                 type="button"
                 onClick={handleGenerateRoadmap}
                 disabled={loading}
-                className="w-full bg-gradient-to-r from-pink-500 via-purple-600 to-violet-600 hover:opacity-95 active:scale-[0.98] transition-all py-3 px-5 rounded-xl font-bold text-sm text-white shadow-lg shadow-purple-500/20 flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed group"
+                className="w-full bg-gradient-to-r from-[#E841A1] via-[#A144FF] to-[#1F1437] hover:opacity-95 active:scale-[0.98] transition-all py-3 px-5 rounded-xl font-bold text-sm text-white shadow-lg shadow-purple-500/20 flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed group"
               >
                 {loading ? (
                   <>
@@ -493,33 +493,33 @@ export default function AICareerPath() {
 
       {/* Global Progress Statistics Widget */}
       <div className="grid grid-cols-1 md:grid-cols-12 gap-5 items-stretch">
-        <div className="md:col-span-8 bg-white/5 border border-white/10 rounded-2xl p-5 flex flex-col justify-between space-y-4">
+        <div className="md:col-span-8 bg-[#1F1437]/25 border border-[#A144FF]/10 rounded-2xl p-5 flex flex-col justify-between space-y-4">
           <div className="flex justify-between items-center">
             <div>
-              <span className="text-[10px] uppercase font-bold tracking-wider text-slate-400 font-mono">
+              <span className="text-[10px] uppercase font-bold tracking-wider text-[#A5A1B8] font-mono">
                 Overall Career Milestone Progress
               </span>
               <h4 className="text-lg font-bold text-slate-100 flex items-center gap-1.5 mt-0.5">
-                <Layers size={16} className="text-purple-400" />
+                <Layers size={16} className="text-[#A144FF]" />
                 {completedNodesCount} of {totalNodes} Target Checkpoints Achieved
               </h4>
             </div>
-            <span className="text-xl font-black font-mono text-pink-400">
+            <span className="text-xl font-black font-mono text-[#E841A1]">
               {overallProgressPercentage}%
             </span>
           </div>
 
           {/* Progress bar container */}
           <div className="space-y-1.5">
-            <div className="w-full bg-slate-900/80 rounded-full h-3 border border-white/5 overflow-hidden p-[1px]">
+            <div className="w-full bg-slate-950 rounded-full h-3 border border-white/5 overflow-hidden p-[1px]">
               <motion.div
                 initial={{ width: 0 }}
                 animate={{ width: `${overallProgressPercentage}%` }}
                 transition={{ duration: 0.6 }}
-                className="h-full rounded-full bg-gradient-to-r from-pink-500 via-purple-500 to-violet-500 shadow-lg shadow-purple-500/40"
+                className="h-full rounded-full bg-gradient-to-r from-[#E841A1] via-[#A144FF] to-[#1F1437] shadow-lg shadow-[#A144FF]/20"
               />
             </div>
-            <div className="flex justify-between text-[10px] font-mono text-slate-500 uppercase">
+            <div className="flex justify-between text-[10px] font-mono text-[#A5A1B8]/60 uppercase">
               <span>Day 1: Basecamp</span>
               <span>Day 45: Project Sync</span>
               <span>Day 90: Interview Calibration</span>
@@ -528,15 +528,15 @@ export default function AICareerPath() {
         </div>
 
         {/* Counter Stats */}
-        <div className="md:col-span-4 bg-white/5 border border-white/10 rounded-2xl p-5 flex flex-col justify-between relative overflow-hidden">
-          <div className="absolute top-0 right-0 w-24 h-24 bg-pink-500/5 rounded-full blur-2xl pointer-events-none" />
+        <div className="md:col-span-4 bg-[#1F1437]/25 border border-[#A144FF]/10 rounded-2xl p-5 flex flex-col justify-between relative overflow-hidden">
+          <div className="absolute top-0 right-0 w-24 h-24 bg-[#A144FF]/5 rounded-full blur-2xl pointer-events-none" />
           <div className="flex items-center justify-between">
-            <span className="text-[10px] uppercase font-bold tracking-wider text-slate-400 font-mono">
+            <span className="text-[10px] uppercase font-bold tracking-wider text-[#A5A1B8] font-mono">
               Status Breakdown
             </span>
             <button
               onClick={handleResetProgress}
-              className="text-[10px] font-mono uppercase tracking-wider text-slate-500 hover:text-white flex items-center gap-1 transition-colors"
+              className="text-[10px] font-mono uppercase tracking-wider text-[#A5A1B8]/60 hover:text-white flex items-center gap-1 transition-colors"
               title="Reset progress metrics"
             >
               <RotateCcw size={10} /> Reset
@@ -544,28 +544,28 @@ export default function AICareerPath() {
           </div>
 
           <div className="grid grid-cols-3 gap-2 py-2 text-center">
-            <div className="p-2 bg-slate-950/40 rounded-xl border border-white/5">
-              <span className="text-lg font-bold font-mono text-emerald-400">
+            <div className="p-2 bg-[#1F1437]/35 rounded-xl border border-white/5">
+              <span className="text-lg font-bold font-mono text-[#00FFA3]">
                 {completedNodesCount}
               </span>
-              <span className="block text-[8px] text-slate-500 font-mono uppercase">Done</span>
+              <span className="block text-[8px] text-[#A5A1B8] font-mono uppercase">Done</span>
             </div>
-            <div className="p-2 bg-slate-950/40 rounded-xl border border-white/5">
+            <div className="p-2 bg-[#1F1437]/35 rounded-xl border border-white/5">
               <span className="text-lg font-bold font-mono text-amber-400">
                 {inProgressNodesCount}
               </span>
-              <span className="block text-[8px] text-slate-500 font-mono uppercase">Active</span>
+              <span className="block text-[8px] text-[#A5A1B8] font-mono uppercase">Active</span>
             </div>
-            <div className="p-2 bg-slate-950/40 rounded-xl border border-white/5">
-              <span className="text-lg font-bold font-mono text-slate-400">
+            <div className="p-2 bg-[#1F1437]/35 rounded-xl border border-white/5">
+              <span className="text-lg font-bold font-mono text-[#A5A1B8]">
                 {totalNodes - completedNodesCount - inProgressNodesCount}
               </span>
-              <span className="block text-[8px] text-slate-500 font-mono uppercase">Next</span>
+              <span className="block text-[8px] text-[#A5A1B8] font-mono uppercase">Next</span>
             </div>
           </div>
 
-          <div className="text-[10px] text-slate-500 font-mono flex items-center gap-1 border-t border-white/5 pt-2">
-            <CheckCircle2 size={11} className="text-purple-400" />
+          <div className="text-[10px] text-[#A5A1B8]/50 font-mono flex items-center gap-1 border-t border-white/5 pt-2">
+            <CheckCircle2 size={11} className="text-[#A144FF]" />
             <span>Updates dynamically based on tasks</span>
           </div>
         </div>
@@ -575,7 +575,7 @@ export default function AICareerPath() {
       <div className="space-y-6">
         <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
           <div className="text-left">
-            <span className="text-[10px] uppercase font-bold tracking-wider text-purple-400 font-mono block">
+            <span className="text-[10px] uppercase font-bold tracking-wider text-[#A144FF] font-mono block">
               Timeframe Milestones
             </span>
             <h3 className="text-xl font-bold text-white mt-0.5">
@@ -584,7 +584,7 @@ export default function AICareerPath() {
           </div>
 
           {/* Stepper Month Nav Buttons */}
-          <div className="flex gap-2 w-full sm:w-auto bg-slate-950/60 border border-white/15 p-1 rounded-2xl">
+          <div className="flex gap-2 w-full sm:w-auto bg-slate-950/80 border border-[#A144FF]/10 p-1 rounded-2xl">
             {[
               { m: 1, title: "Month 1", label: "Foundation", icon: <Code size={13} /> },
               { m: 2, title: "Month 2", label: "Project & OS", icon: <BookOpenCheck size={13} /> },
@@ -606,15 +606,15 @@ export default function AICareerPath() {
                   }}
                   className={`flex-1 sm:flex-initial px-4 py-2.5 rounded-xl transition-all duration-150 flex flex-col items-center sm:items-start text-center sm:text-left min-w-[100px] ${
                     isActive
-                      ? 'bg-gradient-to-r from-purple-500/15 to-pink-500/15 border border-purple-500/40 text-pink-300'
-                      : 'border border-transparent text-slate-400 hover:text-white hover:bg-white/5'
+                      ? 'bg-[#E841A1]/10 border border-[#E841A1]/30 text-[#E841A1]'
+                      : 'border border-transparent text-[#A5A1B8] hover:text-white hover:bg-[#1F1437]/25'
                   }`}
                 >
                   <div className="flex items-center gap-1.5">
-                    {monthObj.icon}
+                     {monthObj.icon}
                     <span className="text-xs font-bold">{monthObj.title}</span>
                   </div>
-                  <span className="text-[9px] uppercase font-mono tracking-wider text-slate-500 mt-0.5">
+                  <span className="text-[9px] uppercase font-mono tracking-wider text-[#A5A1B8]/60 mt-0.5">
                     {monthObj.label} ({prog}%)
                   </span>
                 </button>
@@ -628,7 +628,7 @@ export default function AICareerPath() {
           {/* Node Cards Stepper Timeline (Left Column) */}
           <div className="lg:col-span-5 space-y-4 relative">
             {/* Visual Dotted connection vertical line */}
-            <div className="absolute left-[29px] top-4 bottom-4 w-[2px] bg-dashed border-l border-dashed border-white/10 pointer-events-none" />
+            <div className="absolute left-[29px] top-4 bottom-4 w-[2px] bg-dashed border-l border-dashed border-[#A144FF]/20 pointer-events-none" />
 
             {nodes
               .filter(node => node.month === activeMonth)
@@ -637,11 +637,11 @@ export default function AICareerPath() {
                 const completedChecks = node.checklist.filter(c => c.done).length;
                 const isActive = activeNodeId === node.id;
 
-                let badgeColor = "bg-slate-800 text-slate-400 border-slate-700";
+                let badgeColor = "bg-[#1F1437]/60 text-[#A5A1B8] border-[#A144FF]/10";
                 if (node.status === 'Completed') {
-                  badgeColor = "bg-emerald-500/10 text-emerald-400 border-emerald-500/20";
+                  badgeColor = "bg-[#00FFA3]/10 text-[#00FFA3] border-[#00FFA3]/20";
                 } else if (node.status === 'In Progress') {
-                  badgeColor = "bg-amber-500/10 text-amber-400 border-amber-500/20";
+                  badgeColor = "bg-amber-400/10 text-amber-400 border-amber-400/20";
                 }
 
                 return (
@@ -651,16 +651,16 @@ export default function AICareerPath() {
                     onClick={() => setActiveNodeId(node.id)}
                     className={`w-full p-4 rounded-xl border transition-all text-left flex items-start gap-4 relative group ${
                       isActive
-                        ? 'bg-[#141A28] border-purple-500/50 shadow-lg shadow-purple-500/5'
-                        : 'bg-white/5 border-white/5 hover:bg-white/10 hover:border-white/10'
+                        ? 'bg-[#1F1437]/45 border-[#A144FF] shadow-lg shadow-[#A144FF]/10'
+                        : 'bg-[#1F1437]/15 border border-[#A144FF]/10 hover:bg-[#1F1437]/25 hover:border-[#A144FF]/25'
                     }`}
                   >
                     {/* Stepper Circle */}
                     <div className="relative z-10 flex-shrink-0">
                       <div className={`w-8 h-8 rounded-xl font-mono text-xs font-bold flex items-center justify-center transition-all ${
                         isActive
-                          ? 'bg-gradient-to-r from-pink-500 to-purple-600 text-white shadow-md shadow-purple-500/25 scale-105'
-                          : 'bg-slate-900 text-slate-400 border border-white/10'
+                          ? 'bg-gradient-to-r from-[#E841A1] to-[#A144FF] text-white shadow-md shadow-[#A144FF]/20 scale-105'
+                          : 'bg-[#1F1437]/50 text-[#A5A1B8] border border-[#A144FF]/20'
                       }`}>
                         {(activeMonth - 1) * 3 + index + 1}
                       </div>
@@ -677,19 +677,19 @@ export default function AICareerPath() {
                     <div className="space-y-2 flex-grow overflow-hidden">
                       <div className="flex items-start justify-between gap-2">
                         <h4 className={`text-sm font-bold leading-snug truncate ${
-                          isActive ? 'text-white' : 'text-slate-300 group-hover:text-white'
+                          isActive ? 'text-white' : 'text-[#A5A1B8] group-hover:text-white'
                         }`}>
                           {node.title}
                         </h4>
                         <ChevronRight 
                           size={14} 
                           className={`text-slate-500 mt-1 flex-shrink-0 transition-transform ${
-                            isActive ? 'translate-x-1 text-purple-400' : ''
+                            isActive ? 'translate-x-1 text-[#A144FF]' : ''
                           }`} 
                         />
                       </div>
 
-                      <p className="text-xs text-slate-400 line-clamp-2 leading-relaxed">
+                      <p className="text-xs text-[#A5A1B8] line-clamp-2 leading-relaxed">
                         {node.description}
                       </p>
 
@@ -700,12 +700,12 @@ export default function AICareerPath() {
                         </span>
 
                         {/* Checklist progress */}
-                        <span className="text-[10px] text-slate-500 font-mono">
+                        <span className="text-[10px] text-[#A5A1B8]/70 font-mono">
                           {completedChecks}/{totalChecks} Tasks
                         </span>
 
                         {/* Estimated Duration Badge */}
-                        <span className="text-[10px] text-slate-500 font-mono flex items-center gap-0.5">
+                        <span className="text-[10px] text-[#A5A1B8]/70 font-mono flex items-center gap-0.5">
                           <Clock size={10} />
                           {node.duration}
                         </span>
@@ -723,8 +723,8 @@ export default function AICareerPath() {
                 const node = nodes.find(n => n.id === activeNodeId);
                 if (!node) {
                   return (
-                    <div className="bg-white/5 border border-white/10 p-12 rounded-2xl text-center text-slate-500 min-h-[450px] flex flex-col justify-center items-center">
-                      <Compass size={40} className="text-slate-600 mb-3 animate-pulse" />
+                    <div className="bg-[#1F1437]/25 border border-[#A144FF]/10 p-12 rounded-2xl text-center text-[#A5A1B8] min-h-[450px] flex flex-col justify-center items-center">
+                      <Compass size={40} className="text-[#A5A1B8]/60 mb-3 animate-pulse" />
                       <p className="text-sm font-mono uppercase tracking-wider">
                         Select a milestone node to inspect custom checkpoints
                       </p>
@@ -743,16 +743,16 @@ export default function AICareerPath() {
                     animate={{ opacity: 1, x: 0 }}
                     exit={{ opacity: 0, x: -15 }}
                     transition={{ duration: 0.2 }}
-                    className="bg-white/5 backdrop-blur-xl border border-white/10 p-6 rounded-2xl shadow-xl shadow-black/25 flex flex-col justify-between min-h-[480px] relative overflow-hidden"
+                    className="bg-[#1F1437]/25 backdrop-blur-xl border border-[#A144FF]/10 p-6 rounded-2xl shadow-xl shadow-black/25 flex flex-col justify-between min-h-[480px] relative overflow-hidden"
                   >
                     {/* Top Accent line */}
-                    <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-pink-500 via-purple-500 to-violet-500" />
+                    <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-[#E841A1] via-[#A144FF] to-[#1F1437]" />
 
                     <div className="space-y-6">
                       {/* Card Header Info */}
                       <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 border-b border-white/5 pb-4">
                         <div>
-                          <span className="text-[10px] font-mono uppercase tracking-wider text-pink-400 font-bold block">
+                          <span className="text-[10px] font-mono uppercase tracking-wider text-[#E841A1] font-bold block">
                             Month {node.month} • Core Focus Pathway
                           </span>
                           <h3 className="text-lg font-bold text-white leading-snug mt-1">
@@ -762,19 +762,19 @@ export default function AICareerPath() {
 
                         {/* Status Manual Selector */}
                         <div className="flex items-center gap-1.5 flex-shrink-0">
-                          <span className="text-[10px] text-slate-400 font-mono uppercase font-semibold">
+                          <span className="text-[10px] text-[#A5A1B8] font-mono uppercase font-semibold">
                             Status:
                           </span>
                           <div className="relative">
                             <select
                               value={node.status}
                               onChange={(e) => handleStatusChange(node.id, e.target.value as any)}
-                              className={`appearance-none font-mono text-[10px] font-bold uppercase tracking-wider bg-slate-900 border px-3 py-1.5 pr-8 rounded-lg text-slate-200 focus:outline-none focus:border-purple-500 transition-all cursor-pointer ${
+                              className={`appearance-none font-mono text-[10px] font-bold uppercase tracking-wider bg-slate-900 border px-3 py-1.5 pr-8 rounded-lg text-slate-200 focus:outline-none focus:border-[#A144FF] transition-all cursor-pointer ${
                                 node.status === 'Completed'
-                                  ? 'border-emerald-500/40 text-emerald-400'
+                                  ? 'border-[#00FFA3]/40 text-[#00FFA3]'
                                   : node.status === 'In Progress'
                                     ? 'border-amber-500/40 text-amber-400'
-                                    : 'border-white/10 text-slate-400'
+                                    : 'border-[#A144FF]/10 text-[#A5A1B8]'
                               }`}
                             >
                               <option value="Completed">Completed</option>
@@ -790,24 +790,24 @@ export default function AICareerPath() {
 
                       {/* Description Block */}
                       <div className="space-y-2">
-                        <span className="block text-[10px] font-bold text-slate-400 uppercase tracking-wider font-mono">
+                        <span className="block text-[10px] font-bold text-[#A5A1B8] uppercase tracking-wider font-mono">
                           Checklist Objective Description:
                         </span>
-                        <p className="text-xs text-slate-300 leading-relaxed">
+                        <p className="text-xs text-[#A5A1B8] leading-relaxed">
                           {node.description}
                         </p>
                       </div>
 
                       {/* Skill Tags */}
                       <div className="space-y-2.5">
-                        <span className="block text-[10px] font-bold text-slate-400 uppercase tracking-wider font-mono">
+                        <span className="block text-[10px] font-bold text-[#A5A1B8] uppercase tracking-wider font-mono">
                           Target Core Skills & Tooling Stack:
                         </span>
                         <div className="flex flex-wrap gap-1.5">
                           {node.skills.map((skill, idx) => (
                             <span 
                               key={idx}
-                              className="text-[10px] font-mono font-bold text-pink-300 bg-pink-500/10 border border-pink-500/20 rounded px-2.5 py-1"
+                              className="text-[10px] font-mono font-bold text-[#E841A1] bg-[#E841A1]/10 border border-[#E841A1]/20 rounded px-2.5 py-1"
                             >
                               {skill}
                             </span>
@@ -818,10 +818,10 @@ export default function AICareerPath() {
                       {/* Interactive Progress Checkboxes */}
                       <div className="space-y-3">
                         <div className="flex justify-between items-center">
-                          <span className="block text-[10px] font-bold text-slate-400 uppercase tracking-wider font-mono">
+                          <span className="block text-[10px] font-bold text-[#A5A1B8] uppercase tracking-wider font-mono">
                             Interactive Task Checkpoint Checklist:
                           </span>
-                          <span className="text-[10px] font-mono text-purple-400 font-bold">
+                          <span className="text-[10px] font-mono text-[#A144FF] font-bold">
                             {nodeProgress}% Done
                           </span>
                         </div>
@@ -834,21 +834,21 @@ export default function AICareerPath() {
                               className={`flex items-start gap-3 p-3 rounded-xl border cursor-pointer transition-all ${
                                 item.done 
                                   ? 'bg-emerald-500/5 border-emerald-500/20 hover:border-emerald-500/30' 
-                                  : 'bg-slate-950/40 border-white/5 hover:border-white/10'
+                                  : 'bg-slate-950/40 border border-[#A144FF]/10 hover:border-[#A144FF]/25'
                               }`}
                             >
                               <button
                                 type="button"
                                 className={`mt-0.5 w-4.5 h-4.5 rounded-md border flex items-center justify-center flex-shrink-0 transition-all ${
                                   item.done 
-                                    ? 'bg-emerald-500 border-emerald-500 text-[#0B0F17]' 
-                                    : 'border-white/20 hover:border-pink-400'
+                                    ? 'bg-[#00FFA3] border-[#00FFA3] text-slate-950' 
+                                    : 'border-[#A144FF]/30 hover:border-[#E841A1]'
                                 }`}
                               >
                                 {item.done && <Check size={12} strokeWidth={3} />}
                               </button>
                               <p className={`text-xs leading-relaxed transition-all select-none ${
-                                item.done ? 'text-slate-500 line-through' : 'text-slate-200'
+                                item.done ? 'text-[#A5A1B8]/40 line-through' : 'text-[#A5A1B8]'
                               }`}>
                                 {item.label}
                               </p>
@@ -859,7 +859,7 @@ export default function AICareerPath() {
 
                       {/* Curated Open-Source links */}
                       <div className="space-y-2.5 border-t border-white/5 pt-4">
-                        <span className="block text-[10px] font-bold text-slate-400 uppercase tracking-wider font-mono">
+                        <span className="block text-[10px] font-bold text-[#A5A1B8] uppercase tracking-wider font-mono">
                           Curated Open-Source Resources & Repositories:
                         </span>
                         <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
@@ -870,10 +870,10 @@ export default function AICareerPath() {
                               target="_blank"
                               rel="noopener noreferrer"
                               referrerPolicy="no-referrer"
-                              className="flex items-center justify-between p-2.5 bg-slate-950/60 hover:bg-slate-900 border border-white/5 hover:border-white/10 rounded-xl text-xs text-slate-300 hover:text-white transition-all group"
+                              className="flex items-center justify-between p-2.5 bg-[#1F1437]/30 hover:bg-[#1F1437]/65 border border-[#A144FF]/10 hover:border-[#A144FF]/25 rounded-xl text-xs text-[#A5A1B8] hover:text-white transition-all group"
                             >
                               <span className="flex items-center gap-1.5 font-medium truncate">
-                                <BookOpen size={12} className="text-purple-400 group-hover:text-pink-400 transition-colors" />
+                                <BookOpen size={12} className="text-[#A144FF] group-hover:text-[#E841A1] transition-colors" />
                                 {link.label}
                               </span>
                               <ExternalLink size={11} className="text-slate-500 group-hover:text-slate-300 flex-shrink-0" />
