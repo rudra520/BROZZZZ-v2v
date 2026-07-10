@@ -188,6 +188,8 @@ export default function FintechEqualizer() {
     setIsGenerating(true);
     setGeneratedScript(null);
 
+    const targetVal = Math.round((benchmarks.min + benchmarks.max) / 2);
+
     try {
       const response = await fetch('/api/negotiation-script', {
         method: 'POST',
@@ -196,6 +198,8 @@ export default function FintechEqualizer() {
           role: `${experience} ${domain} Specialist`,
           experience: experience,
           domain: domain,
+          currentOffer: currentOffer,
+          targetMarketValue: targetVal,
           targetSalaryAdjustment: targetAdjustment,
           keyAccomplishments: accomplishments || 'Delivered multiple high-impact technical milestones',
           tone: tone
@@ -206,17 +210,53 @@ export default function FintechEqualizer() {
         throw new Error('Script generation failed');
       }
 
-      const data = await response.json();
-      setGeneratedScript(data);
+      // Initialize talking points and strategies dynamically based on inputs
+      const points = [
+        `Value Anchor: Formally links compensation requested to your key achievements: "${accomplishments || 'Core product contributions & technical engineering execution'}".`,
+        `Market Baseline: Aligns requested ${targetAdjustment} adjustment directly with the validated ${symbol}${targetVal.toLocaleString()} equal-pay benchmark for ${domain}.`,
+        "Professional Positioning: Commands mutual respect through an objective, cooperative, and solutions-oriented negotiation stance."
+      ];
+
+      const strategies = [
+        tone === 'Confident'
+          ? "If they mention rigid salary bands: Propose supplemental signing bonuses, equity refreshers, or a structured performance review in 6 months."
+          : "If they propose a deferral: Request to include a binding performance-linked salary adjustment clause directly in the written employment contract.",
+        `Highlight operational impact: Reference how your expertise in ${domain} immediately resolves their documented engineering bottlenecks on Day 1.`
+      ];
+
+      setGeneratedScript({
+        scriptTemplate: "",
+        talkingPoints: points,
+        counterOfferStrategies: strategies
+      });
+
+      const reader = response.body?.getReader();
+      const decoder = new TextDecoder();
+      if (!reader) throw new Error("Stream reader not supported");
+
+      let streamedText = "";
+      while (true) {
+        const { done, value } = await reader.read();
+        if (done) break;
+        const chunk = decoder.decode(value, { stream: true });
+        streamedText += chunk;
+        setGeneratedScript(prev => {
+          if (!prev) return null;
+          return {
+            ...prev,
+            scriptTemplate: streamedText
+          };
+        });
+      }
     } catch (err) {
       console.error(err);
-      // Local fallback in case of rate limits
+      // Local fallback in case of rate limits or streaming failures
       let template = '';
       let points: string[] = [];
       let strategies: string[] = [];
 
       if (tone === 'Confident') {
-        template = `Dear [Recruiter Name],\n\nThank you for the wonderful offer to join as a ${experience}-level ${domain} professional. I am incredibly excited about the opportunity to contribute to your technical excellence.\n\nBased on my extensive background and specifically my track record of: "${accomplishments || 'delivering robust product architectures and performance optimizations'}", I would like to discuss aligning the base compensation to better reflect this specialized value. Given regional benchmarks and my contribution potential, I am seeking an adjustment of ${targetAdjustment} to the base offer.\n\nWith this alignment, I am ready to sign and fully commit to driving outstanding results for the team. I look forward to your thoughts.\n\nBest regards,\n[Your Name]`;
+        template = `Dear [Recruiter Name],\n\nThank you for the wonderful offer to join as a ${experience}-level ${domain} professional. I am incredibly excited about the opportunity to contribute to your technical excellence.\n\nBased on my extensive background and specifically my track record of: "${accomplishments || 'delivering robust product architectures and performance optimizations'}", I would like to discuss aligning the base compensation to better reflect this specialized value. Given regional benchmarks of ${symbol}${targetVal.toLocaleString()} and my contribution potential, I am seeking an adjustment of ${targetAdjustment} to the base offer.\n\nWith this alignment, I am ready to sign and fully commit to driving outstanding results for the team. I look forward to your thoughts.\n\nBest regards,\n[Your Name]`;
         points = [
           `Anchored on tangible value: Direct link established between your technical success ("${accomplishments || 'core contributions'}") and the requested adjustment.`,
           "Strong commitment: Signal of ready-to-sign commitment upon achieving this market standard, speeding up their hiring process.",
@@ -227,7 +267,7 @@ export default function FintechEqualizer() {
           "If they cite strict bands: Ask about exceptions for highly specialized expertise, noting that your experience directly addresses their immediate delivery bottlenecks."
         ];
       } else if (tone === 'Data-Driven') {
-        template = `Dear [Recruiter Name],\n\nI appreciate the offer for the ${experience} ${domain} role. After researching market thresholds and reviewing the core responsibilities, I would like to propose a compensation adjustment.\n\nMy research indicates that for a professional with my experience level in ${domain} delivering high-impact metrics like: "${accomplishments || 'scalable technical delivery and engineering execution'}", the market threshold is positioned approximately ${targetAdjustment} higher than the current base offer. Aligning with this market standard would reflect the specialized skills I bring to the table.\n\nThank you for considering this data-aligned proposal. I look forward to finding a mutually beneficial agreement.\n\nSincerely,\n[Your Name]`;
+        template = `Dear [Recruiter Name],\n\nI appreciate the offer for the ${experience} ${domain} role. After researching market thresholds and reviewing the core responsibilities, I would like to propose a compensation adjustment.\n\nMy research indicates that for a professional with my experience level in ${domain} delivering high-impact metrics like: "${accomplishments || 'scalable technical delivery and engineering execution'}", the market threshold is positioned approximately ${targetAdjustment} higher than the current base offer. Aligning with this market standard of ${symbol}${targetVal.toLocaleString()} would reflect the specialized skills I bring to the table.\n\nThank you for considering this data-aligned proposal. I look forward to finding a mutually beneficial agreement.\n\nSincerely,\n[Your Name]`;
         points = [
           "Objective anchoring: Anchored in regional market percentiles, making it difficult to reject on subjective grounds.",
           "Objective metrics: Focused strictly on documented delivery metrics and technical competence.",
