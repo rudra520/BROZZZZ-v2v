@@ -348,7 +348,7 @@ export default function FintechEqualizer() {
           Equal Pay Portal • UN SDG 5 Framework
         </div>
         <h2 className="text-3xl font-extrabold text-white tracking-tight sm:text-4xl">
-          Wage Equalizer & Negotiation Simulator
+          Pay Parity Portal
         </h2>
         <p className="mt-3 text-base sm:text-lg text-[#A5A1B8]">
           An interactive dashboard mapping fair STEM compensation thresholds. Verify your offer against validated gender wage patterns, then draft custom negotiation scripts in seconds.
