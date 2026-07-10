@@ -151,8 +151,12 @@ export default function App() {
             onClick={() => handleTabChange('home')}
             className="flex items-center gap-2.5 cursor-pointer group"
           >
-            <div className="w-10 h-10 rounded-xl bg-zinc-900 border border-zinc-800 flex items-center justify-center shadow-lg group-hover:scale-105 transition-transform duration-200">
-              <Sparkles size={18} className="text-zinc-100" />
+            <div className="w-10 h-10 rounded-xl overflow-hidden bg-zinc-900 border border-zinc-800 flex items-center justify-center shadow-lg group-hover:scale-105 transition-transform duration-200">
+              <img 
+                src="https://i.ibb.co/k6HQ7Rzp/Screenshot-2026-07-10-204243.png" 
+                alt="HerHorizon Logo" 
+                className="w-full h-full object-cover"
+              />
             </div>
             <span className="text-xl font-extrabold tracking-tight text-zinc-50">
               HerHorizon
@@ -162,9 +166,9 @@ export default function App() {
           {/* Center Nav Links */}
           <nav className="hidden lg:flex items-center gap-1.5 bg-zinc-900/60 border border-zinc-800/80 p-1 rounded-full backdrop-blur-md">
             {[
-              { id: 'equalizer', label: 'HorizonPath AI', icon: <TrendingUp size={13} /> },
+              { id: 'equalizer', label: 'PPP (Pay Parity Portal)', icon: <TrendingUp size={13} /> },
               { id: 'grants', label: 'EduGrant Hub', icon: <Award size={13} /> },
-              { id: 'career', label: 'AI Career Path', icon: <Map size={13} /> },
+              { id: 'career', label: 'Horizon Path', icon: <Map size={13} /> },
               { id: 'chat', label: 'Dea AI', icon: <MessageSquare size={13} /> }
             ].map((link) => (
               <button
@@ -214,9 +218,9 @@ export default function App() {
               className="lg:hidden border-t border-zinc-800 bg-[#0B0A11]/95 backdrop-blur-xl px-6 py-6 space-y-3"
             >
               {[
-                { id: 'equalizer', label: 'HorizonPath AI', icon: <TrendingUp size={15} /> },
+                { id: 'equalizer', label: 'PPP (Pay Parity Portal)', icon: <TrendingUp size={15} /> },
                 { id: 'grants', label: 'EduGrant Hub', icon: <Award size={15} /> },
-                { id: 'career', label: 'AI Career Path', icon: <Map size={15} /> },
+                { id: 'career', label: 'Horizon Path', icon: <Map size={15} /> },
                 { id: 'chat', label: 'Dea AI', icon: <MessageSquare size={15} /> }
               ].map((link) => (
                 <button
@@ -418,7 +422,7 @@ export default function App() {
                     {
                       id: 'equalizer',
                       icon: <TrendingUp size={22} className="text-[#00FFA3]" />,
-                      title: 'HorizonPath AI',
+                      title: 'PPP (Pay Parity Portal)',
                       desc: 'Compare and audit compensation, discover pay-gaps, and rehearse rebuttal strategies.'
                     },
                     {
@@ -430,7 +434,7 @@ export default function App() {
                     {
                       id: 'career',
                       icon: <Map size={22} className="text-[#00FFA3]" />,
-                      title: 'AI Career Path',
+                      title: 'Horizon Path',
                       desc: '4-step engineering curriculums custom-planned by Gemini to help you acquire strategic technical skills.'
                     },
                     {
@@ -607,7 +611,7 @@ export default function App() {
                           <span className="text-[10px] font-mono uppercase tracking-wider text-[#00FFA3] block font-bold mb-1">
                             Target 5.a • Economic Equality
                           </span>
-                          <h4 className="text-sm font-bold text-white mb-1.5">HorizonPath AI</h4>
+                          <h4 className="text-sm font-bold text-white mb-1.5">PPP (Pay Parity Portal)</h4>
                           <p className="text-xs text-[#A5A1B8] leading-relaxed">
                             Matches localized compensation data to close wage disparities and secure full economic ownership for women.
                           </p>
@@ -624,7 +628,7 @@ export default function App() {
                           <span className="text-[10px] font-mono uppercase tracking-wider text-[#A144FF] block font-bold mb-1">
                             Target 5.5 • Women in Leadership
                           </span>
-                          <h4 className="text-sm font-bold text-white mb-1.5">AI Career Path</h4>
+                          <h4 className="text-sm font-bold text-white mb-1.5">Horizon Path</h4>
                           <p className="text-xs text-[#A5A1B8] leading-relaxed">
                             Architects strict curriculum paths and skill mastery indicators to transition mid-tier candidates into C-Suite roles.
                           </p>
@@ -666,9 +670,9 @@ export default function App() {
             <span className="hover:text-white cursor-pointer" onClick={() => handleTabChange('home')}>HerHorizon Hub</span>
             <span>/</span>
             <span className="text-zinc-100 uppercase font-bold tracking-wider">
-              {activeTab === 'equalizer' && 'HorizonPath AI'}
+              {activeTab === 'equalizer' && 'PPP (Pay Parity Portal)'}
               {activeTab === 'grants' && 'EduGrant Hub'}
-              {activeTab === 'career' && 'AI Career Path'}
+              {activeTab === 'career' && 'Horizon Path'}
               {activeTab === 'chat' && 'Dea AI'}
             </span>
           </div>
