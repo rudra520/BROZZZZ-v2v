@@ -108,10 +108,4 @@ npm run dev
 
 Open [http://localhost:3000](http://localhost:3000) in your browser to view the application locally.
 
-# Updated Version_1.2
-
-### 1) **FinTech Negotiation Script Generator** : Write the API endpoint that takes the user's domain, current offer, and target market value from your frontend sliders, passes them to Gemini using a strict system prompt, and streams back a professional, data-driven negotiation email.  
-
-### 2) **AI STEM Roadmap Engine** : Orchestrate a prompt that forces Gemini to return a clean, structured JSON array representing the 90-day learning path. Parse this directly into your frontend stepper timeline component.  
-
-### 3) **Ask-Her-AI Chatbot** : Establish a stateful chat endpoint using serverless routes to handle real-time career advice and interview preparation.
+```
